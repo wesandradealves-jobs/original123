@@ -1,0 +1,169 @@
+textarea,
+input
+    &[placeholder]
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-moz-placeholder
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-webkit-input-placeholder
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &:-ms-input-placeholder 
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+
+.flex  
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex    
+
+.container
+    display: block
+    max-width: 1800px
+    margin: 0 auto
+    padding-left: 15px
+    padding-right: 15px
+
+#wrap
+    min-height: 100vh
+    overflow: hidden
+
+.logo 
+    img,svg
+        display: block
+        max-width: 100%
+
+.socialnetworks
+    +rem('font-size', 22px)
+    > *
+        display: inline-block
+        vertical-align: middle 
+    [class*="fa-"]
+        line-height: 0
+    [class*="facebook"]
+        color: $facebookblue
+    [class*="twitter"]
+        color: $lightblue
+    [class*="linkedin"]
+        color: $mediumblue
+    [class*="youtube"]
+        color: $lightgray
+        background-color: $red
+        display: block
+        +rem(('font-size':14px, 'line-height':21px))
+        text-align: center 
+        height: 21px
+        width: 21px
+
+.contato-info
+    +rem('font-size', 12px)
+    i 
+        color: $orange 
+        display: inline-block
+        vertical-align: middle 
+        margin-right: 4px
+
+.title
+    color: $facebookblue
+    +rem('font-size', 22px)
+h2.title
+    border-bottom: 2px $orange solid
+    margin-bottom: 25px 
+    padding-bottom: 8px
+
+.contactform
+    > * 
+        display: block
+        &:not(:last-child)
+            margin-bottom: 15px 
+        width: 100%
+        input, button, textarea
+            &:not(.btn)
+                background-color: $clearwhite
+            display: inherit
+            +rem('font-size', 14px)
+            overflow: hidden 
+            padding: 8px
+            resize: none
+            width: inherit
+        textarea 
+            height: 160px
+
+.backToTop
+    color: $orange 
+    display: block 
+    +rem('font-size', 16px)
+    margin: 0 auto 
+    padding: 15px 0
+    text-align: center
+    [class*="fa-"]
+        display: block 
+        +rem('font-size', 19px)
+        margin: 0 auto -5px
+    span 
+        text-decoration: underline 
+
+.menu 
+    >div 
+        align-items: flex-start
+        background-color: $lightgray
+        @extend .flex 
+        flex-flow: column 
+        overflow-x: hidden 
+        overflow-y: auto
+        left: -400px
+        padding-right: 15px 
+        +transition(500ms)
+        height: 100% 
+        width: 345px
+        +mq(414px, max)
+            width: 100%
+        > a 
+            display: block 
+            padding: 15px 0 15px 15px
+            text-align: right
+            width: 100% 
+            > * 
+                display: inline-block 
+                vertical-align: middle 
+        > ul 
+            background-color: white
+            flex: 1
+            justify-content: flex-start
+            width: 100%
+            >li 
+                background-color: white 
+                display: block 
+                padding: 25px 45px
+                &:not(:last-child)
+                    border-bottom: 1px $lightgray solid
+                &:hover
+                    background-color: $orange 
+                    color: white
+    background-color: transparentize($lightgray, .55)
+    display: none
+    height: 100%
+    left: 0
+    position: fixed
+    padding-top: 140px
+    +mq(1280px, max)
+        padding-top: 114px
+        +mq(1080px, max)
+            padding-top: 180px
+    width: 100%
+    z-index: 9
+    &.toggle
+        display: block 
+        >div
+            &.toggle 
+                left: 0

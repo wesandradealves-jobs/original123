@@ -1,0 +1,172 @@
+.o-que-fazemos-menu 
+	>li 
+		&:not(:last-child)
+			margin-bottom: 15px
+		>a 
+			background-color: $clearwhite
+			color: $orange 
+			display: block
+			+rem(('line-height':42px,'font-size':16px)) 
+			height: 42px
+			padding: 0 15px
+			position: relative
+			text-transform: uppercase
+			&:hover 
+				background-color: $orange 
+				color: white 
+			&::after 
+				content: ''
+				display: block 
+				position: absolute 
+				top: 0
+				right: 0
+				z-index: 1
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 0 0 42px 42px
+				border-color: transparent transparent white transparent
+.pg-home
+	.parceiros
+		background-color: white
+	.o-que-fazemos
+		background-color: white
+		.container
+			@extend .columns
+			.box
+				.box-content 
+					padding-left: 0
+					padding-right: 0
+	.quem-somos
+		background-color: white
+		.nossa-equipe
+			align-items: stretch 
+			@extend .flex 
+			flex-flow: row wrap 
+			justify-content: space-between
+			margin: 0 -7.5px
+			&:hover li 
+				filter: grayscale(1)
+				&:hover
+					filter: none
+			> li 
+				flex: 0 0 auto 
+				padding: 0 7.5px 15px
+				+transition(500ms)
+				width: calc(100%/6)
+				.thumbnail 
+					display: block 
+					padding: 0 0 100%
+					width: 100%
+		.container
+			@extend .columns
+			.box
+				.box-content 
+					padding-left: 0
+					padding-right: 0
+	.home
+		.loginform
+			align-items: center 
+			@extend .flex 
+			flex-flow: row wrap 
+			justify-content: space-between
+			margin-top: 35px
+			input 
+				background-color: $clearwhite
+				border: 0
+				display: block 
+				+rem('font-size', 12px)
+				padding: 4px 6px
+				width: 100%
+			a 	
+				color: $orange 
+				+rem('font-size', 12px)
+				text-decoration: underline
+			> * 
+				&.inputs 
+					&:nth-child(2n+2)
+						padding-right: 10px
+						& + .inputs
+							padding-left: 10px
+				&:not(:last-child)
+					margin-bottom: 10px
+				flex: 1
+			> *:last-child,
+			> p 
+				@extend .flex 
+				flex-flow: row wrap 
+				flex: 0 0 auto 
+				justify-content: space-between
+				width: 100%
+			strong 
+				font-weight: bold 
+				+rem('font-size', 16px)
+		.fontes
+			margin-bottom: -5px
+			.box-controls 
+				align-items: center 
+				color: $orange
+				flex: 0 0 auto 
+				@extend .flex 
+				flex-flow: row wrap 
+				justify-content: space-between
+				padding: 10px 25px 10px 0
+				width: 100%
+				z-index: 3
+				> * 
+					background-color: transparent
+					color: $orange 
+					+rem('font-size', 12px)
+					text-transform: lowercase
+					i 
+						display: inline-block 
+						padding: 0 4px
+						vertical-align: middle
+			.box-title
+				+shadow(0px,1px,0px,2px,white)
+				background-color: $lightgray
+				color: $orange
+				font-weight: bold
+				text-transform: initial
+				width: calc(100% - 55px)
+				&::after 
+					z-index: 2
+				&::before
+					border-style: solid
+					border-width: 27px 35px 0 0
+					border-color: white transparent transparent transparent
+					content: ''
+					display: block 
+					height: 0
+					position: absolute 
+					right: -38px
+					top: 2px
+					width: 0
+					z-index: 1
+				& + p 
+					padding: 15px 15px 0
+					span
+						color: $orange
+						display: block 
+						+rem('font-size', 12px)
+						margin: 4px 0 0
+				&::after 
+					border-color: $lightgray transparent transparent transparent
+			.box-inner
+				background-color: $clearwhite
+				margin: 8px -15px 0
+				padding: 4px 0 4px 25px
+			.thumbnail
+				margin-top: 0
+				margin-bottom: 0
+				margin-left: 0
+				height: 130px
+				width: 100px
+				& + *
+					margin-top: -7px
+					margin-bottom: 0
+					padding-top: 0
+			.box-content
+				padding: 4px 0 8px
+		.container
+			@extend .columns

@@ -37,6 +37,9 @@ input
 #wrap
     min-height: 100vh
     overflow: hidden
+    main 
+        .container
+            max-width: 1024px
 
 .logo 
     img,svg
@@ -167,3 +170,303 @@ h2.title
         >div
             &.toggle 
                 left: 0
+
+p 
+    color: $gray
+    +rem(('font-size':14px,'line-height':28px))
+
+section
+    .container
+        padding-top: 35px 
+        padding-bottom: 35px
+
+.box
+    background-color: white
+    .box-footer,
+    .leia-mais
+        color: $orange
+        font-weight: bold
+        +rem('font-size', 13px)
+        margin-top: 10px
+        text-decoration: underline
+    .box-footer
+        text-decoration: initial 
+    .date 
+        color: $orange
+        display: block 
+        +rem('font-size', 12px)
+    .excerpt 
+        color: $gray
+        display: block 
+        font-weight: bold
+        margin: 4px 0
+        +rem('font-size', 14px)
+    &:not(:first-child)
+        margin-top: 35px
+    &.simple
+        box-shadow: initial!important 
+        background-color: initial!important 
+        .box-inner
+            display: block
+        .box-title 
+            display: inline-block
+            left: 0
+            position: absolute 
+            top: 0 
+            width: calc(100% - 250px)
+            +mq(640px, max)
+                width: calc(100% - 55px)
+            z-index: 2
+            & + .thumbnail 
+                flex: 0 0 auto
+                width: 100% 
+        .box-content
+            >div
+                padding: 0 !important
+            p 
+                +rem('line-height', 29px)
+            .title 
+                @extend .date
+                +rem('font-size', 16px)
+    &-inner 
+        @extend .flex 
+        flex-flow: row wrap 
+        > * 
+            flex: 1 
+        .box-content
+            @extend .flex
+            flex-flow: row wrap 
+            padding: 15px 25px
+            &.landscape
+                flex-flow: column wrap
+                padding: 0
+                > *:not(.thumbnail)
+                    padding: 15px
+                .box-footer
+                    display: block
+                    margin-top: 8px 
+                .excerpt   
+                    margin-bottom: 8px
+                .thumbnail
+                    height: 150px
+                    margin: 0px 0px
+                    width: 100%
+                    & + * 
+                        margin: 0
+            > div 
+                flex: 1
+                &.thumbnail
+                    flex: 0 0 auto
+                    margin-left: -25px
+                    margin-top: -15px
+                    margin-bottom: -15px
+                    height: 100px 
+                    width: 180px
+                    & + *
+                        margin-top: -15px
+                        padding-top: 10px
+                        padding-left: 15px
+        .box-title
+            background-color: $orange 
+            color: white 
+            +rem(('font-size':16px,'line-height':27px))
+            flex: 0 0 auto
+            height: 27px 
+            padding: 0 20px
+            position: relative
+            text-transform: uppercase
+            width: calc(100% - 40px)
+            &::after
+                border-style: solid
+                border-width: 27px 35px 0 0
+                border-color: $orange transparent transparent transparent
+                content: ''
+                display: block 
+                height: 0
+                position: absolute 
+                right: -35px
+                top: 0
+                width: 0
+
+.thumbnail 
+    background-size: cover 
+    background-repeat: no-repeat
+    background-position: center center
+
+.btn 
+    display: inline-block
+    +rem('font-size', 12px) 
+    padding: 6px 10px 
+    text-align: center 
+    &.btn-1 
+        background-color: $orange
+        color: white
+
+.columns
+    align-items: stretch 
+    @extend .flex 
+    flex-flow: row wrap 
+    +mq(640px, max)
+        flex-flow: column wrap
+    justify-content: space-between
+    > div 
+        flex: 1
+        &:nth-child(2n+1)
+            padding-right: 20px
+            +mq(640px, max)
+                padding-right: 0
+                margin-bottom: 30px
+            & + * 
+                padding-left: 20px
+                +mq(640px, max)
+                    padding-left: 0
+.bx-subtitle
+    +shadow(1px,1px,25px,-15px,black)
+    min-height: 100%
+    .box-title
+        width: auto
+        .date 
+            display: block
+            left: calc(100% + 30px)
+            position: absolute
+            top: 8px
+            text-transform: initial
+            width: calc(100% + 50px)
+            +mq(940px, max)
+                display: none
+    .box-content
+        flex: 0 0 auto 
+        width: 100%
+.list 
+    align-items: stretch
+    @extend .flex 
+    flex-flow: row wrap 
+    +mq(640px, max)
+        flex-flow: column wrap 
+    justify-content: space-between
+    > li 
+        margin-bottom: 30px
+        &:nth-child(2n+1)
+            padding-right: 15px
+            +mq(640px, max)
+                padding-right: 0
+        &:nth-child(2n+2)
+            padding-left: 15px
+            +mq(640px, max)
+                padding-left: 0
+        flex: 0 0 auto 
+        width: 50%
+        +mq(640px, max)
+            width: auto
+        .box 
+            @extend .bx-subtitle
+.carousel   
+    overflow: hidden
+    .carousel-item
+        align-items: flex-start 
+        display: flex !important
+        flex-flow: row wrap 
+        +mq(767px, max)
+            flex-flow: column wrap
+        justify-content: space-between
+        padding-top: 15px
+        .thumbnail 
+            flex: 0 0 auto 
+            height: 260px
+            width: 260px
+            +mq(767px, max)
+                width: 100%
+            & + * 
+                flex: 1 
+                padding-left: 15px
+                +mq(767px, max)
+                    padding-left: 0
+                    padding-top: 15px
+    .carousel-footer
+        +mq(767px, max)
+            display: none
+        margin: 0 auto
+        max-width: 400px
+        position: relative
+        .carousel-nav
+            @extend .flex 
+            flex-flow: row wrap 
+            justify-content: space-between
+            height: 0 
+            left: 0
+            position: absolute 
+            top: 7px
+            width: 100%
+            z-index: 2
+            .slick-next, .slick-prev
+                color: $orange
+                +rem('font-size', 12px)
+                height: initial 
+                line-height: initial
+                position: relative
+                top: initial
+                left: initial
+                right: initial 
+                transform: initial
+                width: initial 
+                [class="fal-"]
+                    display: inline-block 
+                    margin: 0 5px
+                    vertical-align: middle 
+                &::after, &::before 
+                    display: none
+        .slick-dots
+            z-index: 1
+    .slick-dots 
+        bottom: 0
+        margin: 50px auto 0
+        position: relative
+        li
+            height: auto
+            width: auto 
+            &.slick-active
+                button::before 
+                    background-color: white
+            button 
+                font-size: 0pt
+                height: 10px 
+                width: 80px
+                &::before 
+                    background-color: $lightgray
+                    border-radius: 0
+                    font-family: initial
+                    height: 100% 
+                    width: 100%
+    .carousel-holder
+        background-color: $clearwhite
+        padding: 40px 15px 15px 15px
+    .box-title
+        +shadow(0px,1px,0px,2px,white)
+        background-color: $lightgray
+        color: $orange
+        font-weight: bold
+        text-transform: initial
+        width: calc(100% - 55px)
+        &::after 
+            z-index: 2
+        &::before
+            border-style: solid
+            border-width: 27px 35px 0 0
+            border-color: white transparent transparent transparent
+            content: ''
+            display: block 
+            height: 0
+            position: absolute 
+            right: -38px
+            top: 2px
+            width: 0
+            z-index: 1
+        & + p 
+            padding: 15px 15px 0
+            span
+                color: $orange
+                display: block 
+                +rem('font-size', 12px)
+                margin: 4px 0 0
+        &::after 
+            border-color: $lightgray transparent transparent transparent

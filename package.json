@@ -31,7 +31,9 @@
     "run-sequence": "^2.2.1",
     "sass-rem": "^2.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "slick-carousel": "^1.8.1"
+  },
   "scripts": {
     "test": "npm -v"
   },

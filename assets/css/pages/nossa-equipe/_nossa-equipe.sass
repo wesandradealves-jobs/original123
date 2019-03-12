@@ -1,0 +1,36 @@
+body
+	&.pg-nossa-equipe
+		#wrap 
+			main
+				background-color: $clearwhite
+		.box
+			&:not(.bx-subtitle)
+				background-color: transparent
+				.box-content
+					padding: 0
+			&.bx-subtitle
+				align-items: flex-start
+				background-color: white 
+				@extend .flex 
+				flex-flow: row wrap 
+				justify-content: space-between
+				min-height: initial 
+				margin-top: 25px
+				padding: 20px
+				.box-title
+					+mq(468px, max)
+						word-break: word-break
+						width: 100%
+						&::after
+							display: none 
+				.box-content
+					> div 
+						padding: 15px 0
+				.thumbnail
+					flex: 0 0 auto 
+					height: 120px
+					width: 120px
+					& + * 
+						flex: 1
+						padding-left: 15px
+	

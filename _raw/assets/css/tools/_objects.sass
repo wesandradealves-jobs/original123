@@ -1,0 +1,485 @@
+textarea,
+input
+    &[placeholder]
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-moz-placeholder
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-webkit-input-placeholder
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &:-ms-input-placeholder 
+        color: $gray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+
+.flex  
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex    
+
+.container
+    display: block
+    max-width: 1800px
+    margin: 0 auto
+    padding-left: 15px
+    padding-right: 15px
+
+#wrap
+    min-height: 100vh
+    overflow: hidden
+    main 
+        .container
+            max-width: 1024px
+
+.logo 
+    img,svg
+        display: block
+        max-width: 100%
+
+.socialnetworks
+    +rem('font-size', 22px)
+    > *
+        display: inline-block
+        vertical-align: middle 
+        &:not(:last-child)
+            margin-right: 5px 
+    [class*="fa-"]
+        line-height: 0
+    [class*="facebook"]
+        color: $facebookblue
+    [class*="twitter"]
+        color: $lightblue
+    [class*="linkedin"]
+        color: $mediumblue
+    [class*="youtube"]
+        +border(3px)
+        color: $lightgray
+        background-color: $red
+        display: block
+        +rem(('font-size':14px, 'line-height':21px))
+        text-align: center 
+        height: 21px
+        width: 21px
+
+.contato-info
+    +rem('font-size', 12px)
+    i 
+        color: $orange 
+        display: inline-block
+        vertical-align: middle 
+        margin-right: 4px
+
+.title
+    color: $facebookblue
+    +rem('font-size', 22px)
+
+h2.title
+    font-weight: bold
+    border-bottom: 2px $orange solid
+    margin-bottom: 20px 
+    padding-bottom: 8px
+    & + .box 
+        margin-top: 0
+
+.contactform
+    > * 
+        display: block
+        &:not(:last-child)
+            margin-bottom: 15px 
+        width: 100%
+        input, button, textarea
+            &:not(.btn)
+                background-color: $clearwhite
+            display: inherit
+            +rem('font-size', 14px)
+            overflow: hidden 
+            padding: 8px
+            resize: none
+            width: inherit
+        textarea 
+            height: 160px
+
+.backToTop
+    color: $orange 
+    display: block 
+    +rem('font-size', 16px)
+    margin: 0 auto 
+    padding: 15px 0
+    text-align: center
+    [class*="fa-"]
+        display: block 
+        +rem('font-size', 19px)
+        margin: 0 auto -5px
+    span 
+        text-decoration: underline 
+
+.menu 
+    >div 
+        align-items: flex-start
+        background-color: $lightgray
+        @extend .flex 
+        flex-flow: column 
+        overflow-x: hidden 
+        overflow-y: auto
+        left: -400px
+        padding-right: 15px 
+        +transition(500ms)
+        height: 100% 
+        width: 345px
+        +mq(414px, max)
+            width: 100%
+        > a 
+            display: block 
+            padding: 15px 0 15px 15px
+            text-align: right
+            width: 100% 
+            > * 
+                display: inline-block 
+                vertical-align: middle 
+        > ul 
+            background-color: white
+            flex: 1
+            justify-content: flex-start
+            width: 100%
+            >li 
+                background-color: white 
+                display: block 
+                padding: 25px 45px
+                &:not(:last-child)
+                    border-bottom: 1px $lightgray solid
+                &:hover
+                    background-color: $orange 
+                    color: white
+    background-color: transparentize($lightgray, .55)
+    display: none
+    height: 100%
+    left: 0
+    position: fixed
+    padding-top: 140px
+    +mq(1280px, max)
+        padding-top: 114px
+        +mq(1080px, max)
+            padding-top: 180px
+    width: 100%
+    z-index: 9
+    &.toggle
+        display: block 
+        >div
+            &.toggle 
+                left: 0
+
+p 
+    color: $gray
+    +rem(('font-size':14px,'line-height':28px))
+
+section
+    .container
+        padding-top: 35px 
+        padding-bottom: 35px
+
+.box
+    background-color: white
+    .box-footer,
+    .leia-mais
+        color: $orange
+        font-weight: bold
+        +rem('font-size', 13px)
+        margin-top: 10px
+        text-decoration: underline
+    .box-footer
+        text-decoration: initial 
+    .date 
+        color: $orange
+        display: block 
+        +rem('font-size', 12px)
+    .excerpt 
+        color: $gray
+        display: block 
+        font-weight: bold
+        margin: 4px 0
+        +rem('font-size', 14px)
+    &:not(:first-child)
+        margin-top: 35px
+    &.simple
+        box-shadow: initial!important 
+        background-color: initial!important 
+        .box-inner
+            display: block
+        .box-title 
+            display: inline-block
+            left: 0
+            position: absolute 
+            top: 0 
+            width: calc(100% - 250px)
+            +mq(640px, max)
+                width: calc(100% - 55px)
+            z-index: 2
+            & + .thumbnail 
+                flex: 0 0 auto
+                width: 100% 
+        .box-content
+            >div
+                padding: 0 !important
+            p 
+                +rem('line-height', 29px)
+            .title 
+                @extend .date
+                +rem('font-size', 16px)
+    &-inner 
+        @extend .flex 
+        flex-flow: row wrap 
+        > * 
+            flex: 1 
+        .box-content
+            @extend .flex
+            flex-flow: row wrap 
+            padding: 15px 25px
+            &.landscape
+                flex-flow: column wrap
+                padding: 0
+                > *:not(.thumbnail)
+                    padding: 5px 15px 15px
+                .box-footer
+                    display: block
+                    margin-top: 8px 
+                .excerpt   
+                    margin-bottom: 8px
+                .thumbnail
+                    height: 150px
+                    margin: 0px 0px
+                    width: 100%
+                    & + * 
+                        margin: 0
+            > div 
+                flex: 1
+                &.thumbnail
+                    flex: 0 0 auto
+                    margin-left: -25px
+                    margin-top: -15px
+                    margin-bottom: -15px
+                    height: 100px 
+                    width: 180px
+                    +mq(568px, max)
+                        margin: 0
+                        width: 100%
+                    & + *
+                        margin-top: -15px
+                        padding-top: 10px
+                        padding-left: 15px
+                        +mq(568px, max)
+                            margin-top: 0
+                            padding-left: 0
+        .box-title
+            background-color: $orange 
+            color: white 
+            +rem(('font-size':14px,'line-height':27px))
+            flex: 0 0 auto
+            font-weight: 700
+            height: 27px 
+            padding: 0 15px
+            position: relative
+            text-transform: uppercase
+            width: calc(100% - 40px)
+            & + p 
+                +rem('font-size', 11px)
+            &::after
+                border-style: solid
+                border-width: 27px 20px 0 0
+                border-color: $orange transparent transparent transparent
+                content: ''
+                display: block 
+                height: 0
+                position: absolute 
+                right: -20px
+                top: 0
+                width: 0
+
+.thumbnail 
+    background-size: cover 
+    background-repeat: no-repeat
+    background-position: center center
+
+.btn 
+    display: inline-block
+    +rem('font-size', 12px) 
+    padding: 3px 10px
+    text-transform: lowercase
+    text-align: center 
+    &.btn-1 
+        background-color: $orange
+        color: white
+
+.columns
+    align-items: stretch 
+    @extend .flex 
+    flex-flow: row wrap 
+    +mq(640px, max)
+        flex-flow: column wrap
+    justify-content: space-between
+    > div 
+        flex: 1
+        &:nth-child(2n+1)
+            padding-right: 20px
+            +mq(640px, max)
+                padding-right: 0
+                margin-bottom: 30px
+            & + * 
+                padding-left: 20px
+                +mq(640px, max)
+                    padding-left: 0
+.bx-subtitle
+    +shadow(1px,1px,25px,-15px,black)
+    min-height: 100%
+    .box-title
+        width: auto
+        .date 
+            display: block
+            left: 100%
+            position: absolute
+            top: 8px
+            text-transform: initial
+            width: 100%
+            overflow: hidden
+            +mq(1336px, max)
+                text-overflow: ellipsis
+            white-space: nowrap
+            padding-left: 25px
+            +mq(940px, max)
+                display: none
+    .box-content
+        flex: 0 0 auto 
+        width: 100%
+.list 
+    align-items: stretch
+    @extend .flex 
+    flex-flow: row wrap 
+    +mq(640px, max)
+        flex-flow: column wrap 
+    justify-content: space-between
+    > li 
+        margin-bottom: 30px
+        &:nth-child(2n+1)
+            padding-right: 15px
+            +mq(640px, max)
+                padding-right: 0
+        &:nth-child(2n+2)
+            padding-left: 15px
+            +mq(640px, max)
+                padding-left: 0
+        flex: 0 0 auto 
+        width: 50%
+        +mq(640px, max)
+            width: auto
+        .box 
+            @extend .bx-subtitle
+
+.o-que-fazemos-menu 
+    >li 
+        &:not(:last-child)
+            margin-bottom: 15px
+        >a 
+            background-color: $clearwhite
+            color: $orange 
+            display: block
+            font-weight: bold
+            letter-spacing: .3px
+            +rem(('line-height':42px,'font-size':14px)) 
+            height: 42px
+            padding: 0 15px
+            position: relative
+            text-transform: uppercase
+            &:hover 
+                background-color: $orange 
+                color: white 
+            &::after 
+                content: ''
+                display: block 
+                position: absolute 
+                top: 0
+                right: 0
+                z-index: 1
+                width: 0
+                height: 0
+                border-style: solid
+                border-width: 0 0 42px 42px
+                border-color: transparent transparent white transparent
+.bx-wrapper
+    box-shadow: none 
+    background-color: transparent 
+    border: 0
+    margin-bottom: 0    
+    .bx-pager 
+        @extend .flex
+        flex-flow: row wrap
+        justify-content: center
+        align-items: center
+    .bx-prev,.bx-next
+        background: transparent !important
+        color: $orange !important
+        +rem('font-size', 11px)
+        left: initial !important 
+        right: initial !important
+        position: relative  !important
+        top: initial  !important
+        margin: 0 5px !important
+        width: initial  !important
+        height: initial  !important
+        text-indent: initial !important     
+    .bx-pager-item a 
+        background-color: $lightgray !important
+        border-radius: 0 !important
+        height: 6px!important
+        &.active
+            background-color: white !important
+        width: 70px !important
+        +mq(414px, max)
+            border-radius: 9999px !important
+            height: 15px !important
+            width: 15px !important
+    .bx-controls-auto, .bx-pager     
+        position: relative
+        bottom: 0   
+
+.carousel   
+    .box-title
+        +shadow(0px,1px,0px,2px,white)
+        background-color: $lightgray
+        color: $orange
+        font-weight: bold
+        text-transform: initial
+        &::after 
+            border-color: $lightgray transparent transparent transparent
+            z-index: 2
+        &::before
+            border-style: solid
+            border-width: 27px 20px 0 0
+            border-color: white transparent transparent transparent
+            content: ''
+            display: block 
+            height: 0
+            position: absolute 
+            right: -22px
+            top: 2px
+            width: 0
+            z-index: 1
+    .carousel-inner
+        .item
+            align-items: flex-start 
+            @extend .flex 
+            flex-flow: row wrap 
+            justify-content: space-between
+            .thumbnail 
+                flex: 0 0 auto 
+                & + * 
+                    flex: 1
+                    padding-left: 15px

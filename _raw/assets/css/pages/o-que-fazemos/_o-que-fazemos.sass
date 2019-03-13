@@ -1,0 +1,46 @@
+.pg-o-que-fazemos
+	.carousel   
+	    .carousel-inner
+	        background-color: $clearwhite
+	        padding: 55px 15px 15px 15px
+	        .item
+	            .thumbnail 
+	                height: 145px 
+	                width: 145px
+	                +mq(414px, max)
+	                	width: 100%
+	                & + * 
+	                    +mq(414px, max)
+	                    	padding-left: 0
+	                    	padding-top: 15px
+	    .box-title
+	        padding-right: 90px
+	        width: initial!important
+	        & + p 
+	            padding: 15px 15px 0
+	            span
+	                color: $orange
+	                display: block 
+	                +rem('font-size', 12px)
+	                margin: 4px 0 0
+	        &::after 
+	            border-color: $lightgray transparent transparent transparent
+	.o-que-fazemos-menu
+		align-items: flex-start
+		@extend .flex 
+		flex-flow: row wrap
+		justify-content: space-between 
+		> li 
+			&:nth-child(2n+1)
+				padding-right: 15px
+				+mq(640px, max)
+					padding-right: 0
+			&:nth-child(2n+2)
+				padding-left: 15px
+				+mq(640px, max)
+					padding-left: 0
+			flex: 0 0 auto 
+			margin-bottom: 15px
+			width: 50%
+			+mq(640px, max)
+				width: 100%

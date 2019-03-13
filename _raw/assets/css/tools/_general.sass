@@ -1,0 +1,25 @@
+body
+	#wrap 
+		@extend .flex 
+		flex-flow: column wrap 
+		justify-content: flex-start
+		.header,.footer
+			flex: 0 0 auto 
+		.main 
+			background-color: $clearwhite
+			flex: 1
+	&.pg-interna 
+		.box-title
+			text-transform: uppercase
+		#wrap
+			main 
+				.container
+					background-color: white
+					max-width: 1140px
+					+mq(1340px, min)
+						padding-left: 120px
+						padding-right: 120px
+					+mq(1336px, max)
+						max-width: 768px
+						+mq(640px, max)
+							max-width: 100%

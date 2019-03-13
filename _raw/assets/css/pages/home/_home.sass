@@ -1,0 +1,115 @@
+.pg-home
+	.parceiros
+		background-color: white
+	.o-que-fazemos
+		background-color: white
+		.o-que-fazemos-menu
+			margin-top: 55px
+			+mq(640px, max)
+				margin-top: 0
+		.container
+			@extend .columns
+			.box
+				.box-content 
+					padding-left: 0
+					padding-right: 0
+	.quem-somos
+		background-color: white
+		.nossa-equipe
+			align-items: stretch 
+			@extend .flex 
+			flex-flow: row wrap 
+			justify-content: space-between
+			margin: 0 -7.5px
+			&:hover li 
+				filter: grayscale(1)
+				&:hover
+					filter: none
+			> li 
+				flex: 0 0 auto 
+				padding: 0 7.5px 15px
+				+transition(500ms)
+				width: calc(100%/6)
+				.thumbnail 
+					display: block 
+					padding: 0 0 100%
+					width: 100%
+		.container
+			@extend .columns
+			.box
+				.box-content 
+					padding-left: 0
+					padding-right: 0
+	.home
+		.loginform
+			align-items: center 
+			@extend .flex 
+			flex-flow: row wrap 
+			justify-content: space-between
+			margin-top: 25px
+			input 
+				background-color: $clearwhite
+				border: 0
+				display: block 
+				+rem('font-size', 12px)
+				padding: 4px 6px
+				width: 100%
+			a 	
+				color: $orange 
+				+rem('font-size', 12px)
+				text-decoration: underline
+			> * 
+				&.inputs 
+					&:nth-child(2n+2)
+						padding-right: 10px
+						& + .inputs
+							padding-left: 10px
+				&:not(:last-child)
+					margin-bottom: 10px
+				flex: 1
+			> *:last-child,
+			> p 
+				@extend .flex 
+				flex-flow: row wrap 
+				flex: 0 0 auto 
+				justify-content: space-between
+				width: 100%
+			strong 
+				font-weight: bold 
+				+rem('font-size', 16px)
+		.carousel
+			.box-inner
+				background-color: $clearwhite
+				padding: 0 15px 15px
+			h4
+				+rem('font-size', 12px)
+				margin-bottom: 6px
+			.thumbnail
+				margin-top: 5px
+				height: 100px
+				width: 70px
+				+mq(414px, max)
+					display: none
+					& + * 
+						padding-left: 0
+			.box-title
+				position: relative
+				margin: 0
+				width: calc(100% - 35px)
+				+mq(414px, max)
+					box-shadow: initial 
+					background-color: transparent 
+					padding: 15px 0 0
+					width: 100%
+					&::before,
+					&::after 
+						display: none
+			p 
+				line-height: 16px
+				padding: 10px 15px		
+				+mq(414px, max)
+					padding: 0
+			.bx-wrapper .bx-pager
+				justify-content: space-between	
+		.container
+			@extend .columns

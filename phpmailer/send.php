@@ -15,7 +15,7 @@ require ( dirname(__FILE__).'/../wp-load.php' );
 require_once dirname(__FILE__)."/PHPMailerAutoload.php";
 
 $nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
+$empresa = $_POST['empresa'];
 $email = $_POST['email'];
 $telefone = ($_POST['telefone']) ? $_POST['telefone'] : '-';
 $mensagem = $_POST['mensagem'];
@@ -27,15 +27,11 @@ $message .= '<br/>Mensagem: '.$mensagem. PHP_EOL . PHP_EOL;
 
 $mail = new PHPMailer;
 
-$mail->setFrom('noreply@fhmendes.com.br', 'Clínica FHMendes');
+$mail->setFrom('noreply@original123.com.br', 'Original123');
 
-$mail->addAddress('mendesmd@fhmendes.com.br', 'FH Mendes');
+$mail->addAddress('contato@original123.com.br', 'Original123');
 
 $recipients = array(
-    'clinica@fhmendes.com.br' => 'FH Mendes',
-    'clinicabauru@fhmendes.com.br' => 'FH Mendes Bauru',
-    'clinicalins@fhmendes.com.br' => 'FH Mendes Lins',
-    'silvia@fhmendes.com.br =>' => 'Silvia',
     'wesandradealves@gmail.com' => 'Wesley Andrade'
 );
 
@@ -53,7 +49,7 @@ $mail->CharSet = 'UTF-8';
 // $mail->send();
 
 if($mail->send()){
-    header("Location: ".site_url('contato?sent=true'));     
+    header("Location: ".$_SERVER['HTTP_REFERER'].'?sent=1');     
 }
 
 

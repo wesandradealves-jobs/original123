@@ -50,24 +50,7 @@ $(document).ready(function () {
 	$('.bx-next').appendTo($('.bx-pager')),
 	$('.bx-prev').prependTo($('.bx-pager'));
 	
-	// $( ".o-que-fazemos-menu a" ).each(function() {
-	// 	$(this).click(function(event) {
-	// 		event.preventDefault();
-
-	// 		var slug = convertToSlug($(this).text()),
-	// 			el = $('#'+slug);
-
-	// 		if($('body').is('.pg-interna')){
-	// 			if(el.length){
-	// 			    $('html, body').stop(true, false).animate({
-	// 			        scrollTop: el.offset().top
-	// 			    }, 1000);	
-	// 			}
-	// 		} else {
-	// 			window.location = window.location.origin + '/o-que-fazemos.html#' + slug;
-	// 		}
-	// 	});
-	// });
+	$('.telefone').mask('(00) 0 0000-0000');
 });
       
       

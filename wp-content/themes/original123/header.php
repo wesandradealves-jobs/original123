@@ -86,11 +86,11 @@
 
     } else if(is_archive()){
 
-      echo 'class="pg-archive pg-interna"';
+      echo 'class="pg-archive pg-interna pg-'.get_queried_object()->slug.'"';
 
     } else if(is_category()){
 
-      echo 'class="pg-category pg-interna"';
+      echo 'class="pg-category pg-interna pg-'.get_queried_object()->slug.'"';
 
     } else if(is_search()){
 
@@ -162,16 +162,6 @@
 
       </div>        
 
-      <style>
-
-        .header .container{
-
-          padding: 15px 15px 35px;
-
-        }
-
-      </style>
-
       <?php endif; ?>
 
       <header class="header">
@@ -198,8 +188,6 @@
 
           <?php endif; ?>
 
-          <?php if($current_user->ID) : ?>
-
           <form role="search" method="get" id="searchform" class="searchbar" action="">
 
               <button>
@@ -211,58 +199,6 @@
               <input type="text" value="" name="s" id="s" />
 
           </form>
-
-          <style>
-
-            @media only screen and (max-width: 1080px) and (max-width: 1280px) {
-
-              .menu {
-
-                  padding-top: 185px;
-
-              }
-
-              .header .container .header-info {
-
-                  order: 4;
-
-              }
-
-            }     
-
-            @media only screen and (max-width: 1080px) and (max-width: 414px) {
-
-              .header .container .logo {
-
-                  text-indent: 0;
-
-                  margin-left: -35px;
-
-                  order: 2;
-
-              }
-
-            }      
-
-          </style>
-
-          <?php else : ?>
-
-            <style>
-
-              @media only screen and (max-width: 1080px) and (max-width: 1280px) {
-
-                .menu {
-
-                    padding-top: 115px;
-
-                }              
-
-              }
-
-            </style>
-
-          <?php endif; ?>
 
           <h1 class="logo">
 

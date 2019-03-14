@@ -29,7 +29,7 @@ input
 
 .container
     display: block
-    max-width: 1800px
+    max-width: 1190px
     margin: 0 auto
     padding-left: 15px
     padding-right: 15px
@@ -37,9 +37,6 @@ input
 #wrap
     min-height: 100vh
     overflow: hidden
-    main 
-        .container
-            max-width: 1024px
 
 .logo 
     img,svg
@@ -52,7 +49,7 @@ input
         display: inline-block
         vertical-align: middle 
         &:not(:last-child)
-            margin-right: 5px 
+            margin-right: 3px 
     [class*="fa-"]
         line-height: 0
     [class*="facebook"]
@@ -71,17 +68,9 @@ input
         height: 21px
         width: 21px
 
-.contato-info
-    +rem('font-size', 12px)
-    i 
-        color: $orange 
-        display: inline-block
-        vertical-align: middle 
-        margin-right: 4px
-
 .title
     color: $facebookblue
-    +rem('font-size', 22px)
+    +rem('font-size', 30px)
 
 h2.title
     font-weight: bold
@@ -165,11 +154,6 @@ h2.title
     height: 100%
     left: 0
     position: fixed
-    padding-top: 140px
-    +mq(1280px, max)
-        padding-top: 114px
-        +mq(1080px, max)
-            padding-top: 180px
     width: 100%
     z-index: 9
     &.toggle
@@ -184,16 +168,17 @@ p
 
 section
     .container
-        padding-top: 35px 
-        padding-bottom: 35px
+        padding-top: 40px 
+        padding-bottom: 40px
 
 .box
     background-color: white
+    +shadow(0px,0px,5px,-3px,black)
     .box-footer,
     .leia-mais
         color: $orange
         font-weight: bold
-        +rem('font-size', 13px)
+        +rem('font-size', 12px)
         margin-top: 10px
         text-decoration: underline
     .box-footer
@@ -201,13 +186,12 @@ section
     .date 
         color: $orange
         display: block 
-        +rem('font-size', 12px)
+        +rem('font-size', 11px)
     .excerpt 
         color: $gray
         display: block 
-        font-weight: bold
-        margin: 4px 0
-        +rem('font-size', 14px)
+        margin: 6px 0 0
+        +rem('font-size', 11px)
     &:not(:first-child)
         margin-top: 35px
     &.simple
@@ -221,8 +205,6 @@ section
             position: absolute 
             top: 0 
             width: calc(100% - 250px)
-            +mq(640px, max)
-                width: calc(100% - 55px)
             z-index: 2
             & + .thumbnail 
                 flex: 0 0 auto
@@ -243,12 +225,16 @@ section
         .box-content
             @extend .flex
             flex-flow: row wrap 
-            padding: 15px 25px
+            padding: 15px 20px
             &.landscape
                 flex-flow: column wrap
                 padding: 0
+                &:only-child 
+                    padding-top: 5px
+                    +mq(940px, max)
+                        padding-top: 0
                 > *:not(.thumbnail)
-                    padding: 5px 15px 15px
+                    padding: 10px 15px 15px
                 .box-footer
                     display: block
                     margin-top: 8px 
@@ -264,37 +250,33 @@ section
                 flex: 1
                 &.thumbnail
                     flex: 0 0 auto
-                    margin-left: -25px
+                    margin-left: -20px
                     margin-top: -15px
                     margin-bottom: -15px
                     height: 100px 
-                    width: 180px
-                    +mq(568px, max)
-                        margin: 0
-                        width: 100%
+                    width: 150px
                     & + *
                         margin-top: -15px
                         padding-top: 10px
                         padding-left: 15px
-                        +mq(568px, max)
-                            margin-top: 0
                             padding-left: 0
         .box-title
             background-color: $orange 
             color: white 
-            +rem(('font-size':14px,'line-height':27px))
+            +rem(('font-size':14px,'line-height':22px))
             flex: 0 0 auto
             font-weight: 700
-            height: 27px 
-            padding: 0 15px
+            height: 22px 
+            +rem('letter-spacing', 1.5px)
+            padding: 0 20px
             position: relative
             text-transform: uppercase
-            width: calc(100% - 40px)
+            width: calc(100% - 20px)
             & + p 
                 +rem('font-size', 11px)
             &::after
                 border-style: solid
-                border-width: 27px 20px 0 0
+                border-width: 22px 20px 0 0
                 border-color: $orange transparent transparent transparent
                 content: ''
                 display: block 
@@ -323,20 +305,20 @@ section
     align-items: stretch 
     @extend .flex 
     flex-flow: row wrap 
-    +mq(640px, max)
+    +mq(940px, max)
         flex-flow: column wrap
     justify-content: space-between
     > div 
         flex: 1
         &:nth-child(2n+1)
             padding-right: 20px
-            +mq(640px, max)
+            +mq(940px, max)
                 padding-right: 0
-                margin-bottom: 30px
             & + * 
                 padding-left: 20px
-                +mq(640px, max)
+                +mq(940px, max)
                     padding-left: 0
+                    padding-top: 30px
 .bx-subtitle
     +shadow(1px,1px,25px,-15px,black)
     min-height: 100%
@@ -348,14 +330,9 @@ section
             position: absolute
             top: 8px
             text-transform: initial
-            width: 100%
             overflow: hidden
-            +mq(1336px, max)
-                text-overflow: ellipsis
             white-space: nowrap
             padding-left: 25px
-            +mq(940px, max)
-                display: none
     .box-content
         flex: 0 0 auto 
         width: 100%
@@ -363,23 +340,23 @@ section
     align-items: stretch
     @extend .flex 
     flex-flow: row wrap 
-    +mq(640px, max)
-        flex-flow: column wrap 
+    +mq(940px, max)
+        flex-flow: column wrap
     justify-content: space-between
     > li 
         margin-bottom: 30px
         &:nth-child(2n+1)
             padding-right: 15px
-            +mq(640px, max)
+            +mq(940px, max)
                 padding-right: 0
         &:nth-child(2n+2)
             padding-left: 15px
-            +mq(640px, max)
+            +mq(940px, max)
                 padding-left: 0
         flex: 0 0 auto 
         width: 50%
-        +mq(640px, max)
-            width: auto
+        +mq(940px, max)
+            width: 100%
         .box 
             @extend .bx-subtitle
 
@@ -395,7 +372,7 @@ section
             letter-spacing: .3px
             +rem(('line-height':42px,'font-size':14px)) 
             height: 42px
-            padding: 0 15px
+            padding: 0 12px
             position: relative
             text-transform: uppercase
             &:hover 
@@ -483,3 +460,17 @@ section
                 & + * 
                     flex: 1
                     padding-left: 15px
+
+.topbar
+    background-color: $orange
+    color: white
+    font-size: +rem('font-size', 12px)
+    .container
+        padding: 5px 15px
+        p
+            color: white !important
+
+
+.bx-wrapper .bx-pager.bx-default-pager a
+    margin: 0 !important
+    text-transform: lowercase

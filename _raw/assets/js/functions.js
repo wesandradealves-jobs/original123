@@ -10,6 +10,7 @@ function convertToSlug(Text)
 function mobileNavigation(e) {
 	if(!menu){
 		menu = true;
+		var header = ($('.topbar').length) ? $('.topbar').outerHeight() + $('header').outerHeight() : $('header').outerHeight();
 	    $(e).toggleClass('is-active');
 	    $('html, body').stop(true, false).animate({
 	        scrollTop: ($('.topbar').length) ? $(".topbar").offset().top : $("header").offset().top
@@ -17,7 +18,7 @@ function mobileNavigation(e) {
 	    $('html, body').toggleClass('toggle'),
 	    $('.menu').toggleClass('toggle'),
 	    setTimeout(function(){
-	    	$('.menu').children().toggleClass('toggle');
+	    	$('.menu').css('padding-top', header).children().toggleClass('toggle');
 	    }, 1000);
 	}
 }
@@ -40,7 +41,6 @@ function backToTop(e) {
     }, 1000);
 }
 $(document).ready(function () {
-
 	$('.slider').bxSlider({
 		nextText: 'Próximo &#9654;',
 		prevText: '&#9664; Anterior'

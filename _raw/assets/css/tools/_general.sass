@@ -1,25 +1,57 @@
 body
-	#wrap 
-		@extend .flex 
-		flex-flow: column wrap 
-		justify-content: flex-start
-		.header,.footer
-			flex: 0 0 auto 
+	&.pg-interna 
 		.main 
 			background-color: $clearwhite
-			flex: 1
-	&.pg-interna 
-		.box-title
-			text-transform: uppercase
-		#wrap
-			main 
+			.container 
+				background-color: white
+				padding-left: 220px 
+				padding-right: 220px
+				+mq(1190px, max)
+					padding-left: 15px 
+					padding-right: 15px
+		&.pg-parceiros
+			.parceiros:first-of-type
+				h2.title 
+					max-width: 50%
+			.parceiros:first-of-type ~ .parceiros 
+				.container 
+					padding-top: 20px
+		&.pg-clientes-na-imprensa,
+		&.pg-sugestoes-de-pauta
+			.box-inner .box-content.landscape:only-child
+				padding-top: 0
+			.list>li
+				margin-bottom: 15px
+				&:nth-child(2n+1)
+					padding-right: 20px
+					+mq(940px, max)
+						padding-right: 0
+					& + li 
+						padding-left: 20px
+						+mq(940px, max)
+							padding-left: 0
+			h2.title 
+				max-width: calc(50% - 25px)
+			.main 
 				.container
-					background-color: white
-					max-width: 1140px
-					+mq(1340px, min)
-						padding-left: 120px
-						padding-right: 120px
-					+mq(1336px, max)
-						max-width: 768px
-						+mq(640px, max)
-							max-width: 100%
+					background-color: transparent
+					padding-left: 15px 
+					padding-right: 15px
+					.box 
+						+shadow(0px,0px,5px,-3px,black)
+						.excerpt 
+							font-size: initial 
+							font-weight: bold
+		footer 
+			.container 
+				max-width: 940px
+		h2.title
+			padding-bottom: 4px
+		.box 
+			box-shadow: initial
+			.box-inner .box-title
+				text-transform: uppercase
+				padding-left: 8px
+				span 
+					display: inline-block 
+					vertical-align: middle

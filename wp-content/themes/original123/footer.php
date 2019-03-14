@@ -8,7 +8,7 @@
 
 			  <div>
 
-			    <form class="contactform" method="POST" action="<?php site_url('PHPMailer/send.php') ?>">
+			    <form class="contactform" method="POST" action="<?php echo site_url('PHPMailer/send.php') ?>">
 
 			      <span>
 

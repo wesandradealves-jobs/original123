@@ -3,25 +3,28 @@
 	.container
 		@extend .flex
 		flex-flow: row wrap
-		justify-content: space-between
-		max-width: 1024px
-		padding-top: 20px
+		justify-content: flex-start
+		padding-top: 30px
 		padding-bottom: 20px
 		.contato-info 
 			color: black
-			margin: 15px 0
+			margin: 20px 0 15px
+			+mq(568px, max)
+				margin: 20px auto 15px 
+				text-align: center
 			[class*="fa-"]
 				background-color: $orange 
 				color: $lightgray
 				display: inline-block 
-				+rem(('line-height':22px,'font-size':16px))
+				+rem(('line-height':22px,'font-size':14px))
 				height: 22px
+				margin-right: 8px
 				text-align: center
 				vertical-align: middle
 				width: 22px 
 			>* 
 				display: block
-				+rem('font-size', 16px)
+				+rem('font-size', 14px)
 				&:not(:last-child)
 					margin-bottom: 8px
 		.map 
@@ -41,24 +44,21 @@
 			img 
 				width: 100%
 		> *
-			flex: 1
+			flex: 0 0 auto
 			&:nth-child(2)
-				flex: 0 0 auto
 				padding-right: 15px 
-				width: 660px
-				+mq(1080px, max)
-					flex: 1
-					width: initial 
-					+mq(640px, max)
-						padding-right: 0
-						flex: 0 0 auto 
+				+mq(568px, max)
+					padding-right: 0
+				width: 60%
+				+mq(950px, max)
+					width: 50% 
+					+mq(568px, max)
 						width: 100%
 				& + * 
 					padding-left: 15px
-					+mq(640px, max)
-						flex: 0 0 auto 
-						margin-top: 35px
+					+mq(568px, max)
 						padding-left: 0
+						padding-top: 30px 
 						width: 100%
 			&.title 
 				flex: 0 0 auto

@@ -2,22 +2,14 @@
 	background-color: $lightgray
 	border-bottom: 4px $orange solid
 	z-index: 10
+	.hamburger
+	    padding: 0
 	.container
 		align-items: center
 		@extend .flex 
 		flex-flow: row wrap 
 		justify-content: flex-start
-		padding-top: 20px
-		padding-bottom: 20px
-		+mq(1080px, max)
-			> *
-				flex: 1
-				&:nth-child(1)
-					order: 2
-				&:nth-child(2)
-					order: 3
-				&:nth-child(4)
-					order: 4
+		padding-top: 5px
 		.searchbar
 			align-items: center 
 			border: 1px $orange solid
@@ -26,16 +18,17 @@
 			flex-flow: row
 			flex: 1
 			justify-content: space-between
-			margin-left: 80px
-			padding: 9px
-			+mq(1440px, max)
-				// margin: 0 15px
-				flex:  0 0 auto
-				max-width: 240px
-				width: 100%
-				+mq(1080px, max)
-					margin: 15px auto
+			max-width: 210px
+			margin-left: 60px
+			+mq(970px, max)
+				margin-left: 15px
+				+mq(910px, max)
+					flex: 0 0 auto
 					max-width: 100%
+					margin: 15px auto 
+					order: 3
+					width: 100%
+			padding: 9px
 			input, button 
 				background-color: transparent
 				flex: 1
@@ -50,51 +43,76 @@
 		.header-info
 			flex: 1
 			margin-left: auto 
-			padding-left: 80px
-			+mq(1080px, max)
-				padding-left: 0
+			+mq(910px, max)
+				flex: 0 0 auto 
+				margin: 0 auto 10px
+				order: 4
 				text-align: center
 				width: 100%
 			> * 
 				display: block 
 				text-align: right
-				+mq(1080px, max)
-					text-align: inherit
-					+mq(414px, max)
-						+rem('font-size', 10px)
+				// +mq(1080px, max)
+				// 	text-align: inherit
+				// 	+mq(414px, max)
+				// 		+rem('font-size', 10px)
 				> * 
 					display: inline-block 
 			.contato-info
+				+rem('font-size', 12px)
+				+mq(414px, max)
+					width: 100%
+					> * 
+						display: block 
+						text-align: center 
+						width: 100%
+						&:not(:last-child)
+							margin-bottom: 8px
+							margin-right: 0 !important 
+							margin-left: 0 !important
+					+rem('font-size', 10px)
+				i 
+					color: $orange 
+					display: inline-block
+					vertical-align: middle 
+					margin-right: 4px
 				> *:not(:last-child)
-					margin-right: 7.5px
+					margin-right: 10px
 		.socialnetworks
 			margin-bottom: 7px
-			+mq(1080px, max)
-				display: none
+			+mq(910px, max)
+				text-align: center
 		.logo 
 			flex: 1
 			margin: 0 auto 
 			text-align: center
+			+mq(910px, max)
+				margin-right: -84px
+				order: 1 
+				z-index: 1
+				+mq(540px, max)
+					margin-right: -26px
 			img
-				min-height: 90px
-				+mq(1280px, max)
-					min-height: initial
-					+mq(1080px, max)
-						max-width: calc(280px - 115px)
-						min-height: initial
+				// +mq(1280px, max)
+				// 	min-height: initial
+				// 	+mq(1080px, max)
+				// 		max-width: calc(280px - 115px)
+				// 		min-height: initial
 			> * 
 				display: inline-block 
-			+mq(1080px, max)
-				+mq(415px, min)
-					flex: 0 0 auto
-					order: 1
-					text-indent: 105px
-					width: calc(100% - 105px)
-				+mq(414px, max)
-					text-indent: 35px
+			// +mq(1080px, max)
+			// 	+mq(415px, min)
+			// 		flex: 0 0 auto
+			// 		order: 1
+			// 		text-indent: 105px
+			// 		width: calc(100% - 105px)
+			// 	+mq(414px, max)
+			// 		text-indent: 35px
 		.navigation
-			+mq(414px, max)
-				flex: 0 0 auto
+			+mq(910px, max)
+				flex: 0 0 auto 
+				order: 2
+				z-index: 2
 			.hamburger
 				display: inline-block 
 				padding-right: 0
@@ -108,5 +126,5 @@
 					line-height: 0
 					top: -3px
 					margin-left: 7.5px
-					+mq(414px, max)
+					+mq(540px, max)
 						display: none

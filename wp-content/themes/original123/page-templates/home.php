@@ -187,8 +187,8 @@
   <?php if($o_que_fazemosID || get_field('o_que_fazemos', $o_que_fazemosID)) : ?>
   <section class="o-que-fazemos">
     <div class="container">
+      <h2 class="title"><?php echo get_the_title($o_que_fazemosID); ?></h2>
       <div>
-        <h2 class="title"><?php echo get_the_title($o_que_fazemosID); ?></h2>
         <div class="box">
           <div class="box-inner">
             <?php if(get_field('rotulo_da_sessao', $o_que_fazemosID)) : ?>

@@ -1,33 +1,100 @@
 .pg-home
+	.main 
+		background-color: $clearwhite
+	.clientes-na-imprensa,
+	.quem-somos
+		.container 
+			padding-bottom: 30px
+	.o-que-fazemos,
+	.home 
+		.container 
+			padding-top: 30px
+	.parceiros
+		p 
+			text-align: justify
+	.sugestoes-de-pauta
+		.container
+			padding-top: 0
+	.parceiros
+		.box.simple .box-content p
+			line-height: 1.8
+		.list 
+			.title 
+				+rem('font-size', 16px)
+				margin-bottom: 8px
+	.parceiros,
+	.clientes-na-imprensa,
+	.sugestoes-de-pauta
+		.box-inner .box-content.landscape>.thumbnail
+			margin-bottom: 8px
+		.box-inner .box-content.landscape>:not(.thumbnail)
+			padding: 5px 15px 15px
+		.box-inner .box-title
+			padding-left: 8px
+		.list>li
+			margin-bottom: 15px
+			&:nth-child(2n+1)
+				padding-right: 20px
+				+mq(940px, max)
+					padding-right: 0
+				& + li 
+					padding-left: 20px
+					+mq(940px, max)
+						padding-left: 0
 	.parceiros
 		background-color: white
 	.o-que-fazemos
 		background-color: white
+		.title 
+			flex-flow: 0 0  auto 
+			width: 100%
+		.box
+			box-shadow: initial
+			.box-title 
+				+rem('font-size', 14px)
+				height: auto
+				line-height: initial
+				overflow: hidden 
+				padding: 3px 8px
+				width: 100%
+				&::after 
+					background-color: white
+					border-width: 50px 20px 0 0
+					right: 0
+			.box-inner .box-content
+				padding: 15px 0
 		.o-que-fazemos-menu
-			margin-top: 55px
 			+mq(640px, max)
 				margin-top: 0
 		.container
 			@extend .columns
-			.box
-				.box-content 
-					padding-left: 0
-					padding-right: 0
+			div
+				&:nth-of-type(1)
+					padding-right: 15px
+					+mq(940px, max)
+						padding-right: 0
+					& + div 
+						padding-left: 15px
+						+mq(940px, max)
+							padding-left: 0
+							padding-top: 30px
 	.quem-somos
 		background-color: white
+		.box-inner .box-title
+			padding: 0 5px
 		.nossa-equipe
 			align-items: stretch 
 			@extend .flex 
 			flex-flow: row wrap 
-			justify-content: space-between
-			margin: 0 -7.5px
+			justify-content: flex-start
+			margin: 6px -7.5px 0
 			&:hover li 
 				filter: grayscale(1)
 				&:hover
 					filter: none
 			> li 
 				flex: 0 0 auto 
-				padding: 0 7.5px 15px
+				padding: 0 8.5px 17px
 				+transition(500ms)
 				width: calc(100%/6)
 				.thumbnail 
@@ -46,7 +113,7 @@
 			@extend .flex 
 			flex-flow: row wrap 
 			justify-content: space-between
-			margin-top: 25px
+			margin: 20px auto
 			input 
 				background-color: $clearwhite
 				border: 0
@@ -78,14 +145,15 @@
 				font-weight: bold 
 				+rem('font-size', 16px)
 		.carousel
+			margin: 0
 			.box-inner
 				background-color: $clearwhite
-				padding: 0 15px 15px
+				padding: 0 0 15px 15px
 			h4
 				+rem('font-size', 12px)
 				margin-bottom: 6px
 			.thumbnail
-				margin-top: 5px
+				margin-top: 15px
 				height: 100px
 				width: 70px
 				+mq(414px, max)
@@ -93,23 +161,30 @@
 					& + * 
 						padding-left: 0
 			.box-title
+				height: 27px
+				line-height: 25px
+				padding: 0 15px
+				letter-spacing: initial
 				position: relative
+				+rem('font-size', 14px)
 				margin: 0
-				width: calc(100% - 35px)
-				+mq(414px, max)
-					box-shadow: initial 
-					background-color: transparent 
-					padding: 15px 0 0
-					width: 100%
-					&::before,
-					&::after 
-						display: none
+				width: calc(100% - 22px)
+				&::before,
+				&::after 
+					border-width: 27px 20px 0 0
 			p 
 				line-height: 16px
-				padding: 10px 15px		
+				padding: 10px 15px 10px 0
 				+mq(414px, max)
 					padding: 0
 			.bx-wrapper .bx-pager
-				justify-content: space-between	
+				justify-content: center
+				padding-right: 15px
+				.bx-prev 
+					margin-right: auto !important 
+				.bx-next 
+					margin-left: auto !important
+				.bx-pager-item
+					margin: 0 5px !important
 		.container
 			@extend .columns

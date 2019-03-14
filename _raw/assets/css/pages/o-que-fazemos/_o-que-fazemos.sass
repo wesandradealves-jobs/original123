@@ -1,30 +1,52 @@
 .pg-o-que-fazemos
+	.o-que-fazemos-menu
+		padding-top: 10px
+		>li>a
+			height: 30px
+			line-height: 30px
+	.box-title 
+		+rem('font-size', 14px)
+		height: auto
+		line-height: initial
+		padding: 8px 20px !important
+		width: 100%
+		&::after,
+		&::before 
+		    border-width: 30px 20px 0 0
+	.box.simple .box-content p
+		line-height: 1.5
+		padding: 20px 0 0
 	.carousel   
-	    .carousel-inner
-	        background-color: $clearwhite
-	        padding: 55px 15px 15px 15px
-	        .item
-	            .thumbnail 
-	                height: 145px 
-	                width: 145px
-	                +mq(414px, max)
-	                	width: 100%
-	                & + * 
-	                    +mq(414px, max)
-	                    	padding-left: 0
-	                    	padding-top: 15px
+		.bx-controls
+			padding-top: 40px
+		.bx-wrapper .bx-pager-item
+			margin: 0 5px
+		.box-content p
+			padding: 0 !important
+		.carousel-inner
+			background-color: $clearwhite
+			padding: 55px 15px 15px 20px
+			.item
+				.thumbnail 
+					height: 145px 
+					width: 145px
+					& + *
+						padding: 0 30px 0 30px
 	    .box-title
-	        padding-right: 90px
-	        width: initial!important
-	        & + p 
-	            padding: 15px 15px 0
-	            span
-	                color: $orange
-	                display: block 
-	                +rem('font-size', 12px)
-	                margin: 4px 0 0
-	        &::after 
-	            border-color: $lightgray transparent transparent transparent
+			overflow: initial
+			padding-right: 90px
+			width: initial!important
+			&::after,
+			&::before
+			    border-width: 35px 22px 0 0
+			    right: -22px
+			& + p 
+				padding: 15px 15px 0
+			span
+				color: $orange
+				display: block 
+				+rem('font-size', 12px)
+				margin: 4px 0 0
 	.o-que-fazemos-menu
 		align-items: flex-start
 		@extend .flex 

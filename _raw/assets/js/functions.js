@@ -42,13 +42,15 @@ function backToTop(e) {
 }
 $(document).ready(function () {
 	$('.slider').bxSlider({
-		nextText: 'Próximo &#9654;',
-		prevText: '&#9664; Anterior'
+		nextText: 'Próximo <i class="fas fa-caret-right"></i>',
+		prevText: '<i class="fas fa-caret-left"></i> Anterior'
 	});
 
-	$('.bx-prev,.bx-next').unwrap(),
-	$('.bx-next').appendTo($('.bx-pager')),
-	$('.bx-prev').prependTo($('.bx-pager'));
+	setTimeout(function(){
+		$('.bx-prev,.bx-next').unwrap(),
+		$('.bx-next').appendTo($('.bx-pager')),
+		$('.bx-prev').prependTo($('.bx-pager'));
+    }, 600);	
 	
 	$('.telefone').mask('(00) 0 0000-0000');
 });

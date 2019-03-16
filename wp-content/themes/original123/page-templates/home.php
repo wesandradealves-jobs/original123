@@ -10,9 +10,11 @@
   <section class="home">
     <div class="container">
       <div>
-        <?php if(get_field('intro', $homeID)) : ?>
-          <?php echo get_field('intro', $homeID); ?>
-        <?php endif; ?>
+          <p>
+              <?php
+                print_r(get_page_by_path( 'home' )->post_content);
+              ?>
+          </p>
         <!--  -->
           <?php $query_args = array(
             'post_type' => 'post', 
@@ -148,7 +150,11 @@
     <div class="container">
       <div>
         <h2 class="title"><?php echo get_the_title($quem_somosID); ?></h2>
-        <p><?php echo get_the_excerpt($quem_somosID); ?></p>
+          <p>
+              <?php
+                print_r(get_page_by_path( 'quem-somos' )->post_content);
+              ?>
+          </p>
       </div>
       <?php if($nossa_equipeID || get_field('equipe', $nossa_equipeID)) : ?>
       <div>
@@ -159,9 +165,11 @@
               <h2 class="box-title"><?php echo get_field('rotulo_da_sessao', $nossa_equipeID); ?></h2>
               <?php endif; ?>
               <div class="box-content">
-                <p>
-                  <?php echo get_the_excerpt($nossa_equipeID); ?>
-                </p>
+              <p>
+                  <?php
+                    print_r(get_page_by_path( 'nossa-equipe' )->post_content);
+                  ?>
+              </p>
                 <a href="<?php echo get_the_permalink($nossa_equipeID); ?>" class="leia-mais">Conheça nossos profissionais</a>
               </div>
             </div>
@@ -172,7 +180,7 @@
               foreach (get_field('equipe', $nossa_equipeID) as $key => $value) {
                 ?>
                 <li>
-                  <a title="<?php echo $value['nome'].' - '.$value['cargo']; ?>" class="thumbnail" href="<?php echo get_the_permalink($nossa_equipeID).'#'.to_permalink($value['nome']); ?>" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></a>
+                  <a title="<?php echo $value['nome'].' - '.$value['cargo']; ?>" class="thumbnail" href="<?php echo get_the_permalink($nossa_equipeID).'#'.$value['nome']; ?>" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></a>
                 </li>
                 <?php
               }
@@ -195,7 +203,11 @@
             <h2 class="box-title"><?php echo get_field('rotulo_da_sessao', $o_que_fazemosID); ?></h2>
             <?php endif; ?>
             <div class="box-content">
-              <?php the_excerpt($o_que_fazemosID); ?>
+              <p>
+                  <?php
+                    print_r(get_page_by_path( 'o-que-fazemos' )->post_content);
+                  ?>
+              </p>
             </div>
           </div>
         </div>
@@ -240,7 +252,7 @@
                 <div class="box">
                   <div class="box-inner">';
                     if($i >= 3) :
-                      echo '<h2 class="box-title">'.get_the_title().'<small class="date">'.get_the_date().'</small></h2>';
+                      echo '<div class="title-section"><h2 class="box-title">'.get_the_title().'</h2> <span><small class="date">'.get_the_date().'</small></span></div>';
                     endif;
                     echo '
                     <div class="box-content '.( ($i < 3) ? 'landscape' : '' ).'">';

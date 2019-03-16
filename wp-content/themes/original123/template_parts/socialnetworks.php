@@ -17,7 +17,7 @@
 		<?php endif; ?>
 		<?php if ( get_theme_mod('youtube') ) : ?>
 		<li>
-				<a href="<?php echo get_theme_mod('youtube');  ?>" title="Youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+				<a href="<?php echo get_theme_mod('youtube');  ?>" title="Youtube" target="_blank"><i class="fab fa-youtube"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/youtube.png" alt="Youtube"></i></a>
 		</li>
 		<?php endif; ?>
 	</ul>

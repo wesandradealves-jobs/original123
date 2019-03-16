@@ -9,28 +9,8 @@
       <?php if(get_field('parceiros', $nossos_parceirosID)) : ?>
       <ul class="list">
         <?php 
-            $j = 0;
-            foreach (get_field('parceiros', $nossos_parceirosID) as $key => $value) { $j++; ?>
-              <?php 
-                if(get_page_by_path( 'nossos-parceiros' )->ID == get_the_id()) :
-                  if($j > 4) :
-              ?>
-              <li>
-                <div class="box simple">
-                  <div class="box-inner">
-                    <div class="box-content landscape">
-                      <div>
-                        <p>
-                          <h3 class="title"><?php echo $value['nome']; ?></h3>
-                          <p><?php echo $value['texto']; ?></p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <?php endif; 
-              else : ?>
+            foreach (get_field('parceiros', $nossos_parceirosID) as $key => $value) :   
+            ?>
                 <li>
                   <div class="box simple">
                     <div class="box-inner">
@@ -45,10 +25,9 @@
                     </div>
                   </div>
                 </li> 
-              <?php
-              endif;
-            }
-        ?>
+            <?php 
+                endforeach;
+            ?>
       </ul>
       <?php endif; ?>
     </div>

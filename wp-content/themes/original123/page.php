@@ -35,41 +35,83 @@
 
 				              		case 'nossos-parceiros': $k = 0;
 
-				              			foreach (get_field('parceiros') as $key => $value) {
+				              							              			if(get_field('o_que_fazemos', get_page_by_path( 'o-que-fazemos' ))){
 
-				              				$k++;
+				              				foreach (get_field('o_que_fazemos',get_page_by_path( 'o-que-fazemos' )) as $key => $value) {
+                                                if(!$value['eh_case']) :
+				              					?>
 
-				              				if($k <= 4) :
+												<div id="<?php echo $value['titulo']; ?>" class="box simple <?php echo ($value['eh_case']) ? 'carousel' : ''; ?>">
 
-				              				?>
+												<div class="box-inner">
 
-								            <div class="box simple">
+												  <h2 class="box-title"><?php echo $value['titulo']; ?></h2>
 
-								              <div class="box-inner">
+												  <div class="box-content landscape">
 
-								                <h2 class="box-title"><?php echo $value['nome']; ?></h2>
+												  	<?php if(!$value['eh_case']) : ?>
 
-								                <div class="box-content landscape">
+													    <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></div>
 
-								                  <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></div>
+													    <div>
 
-								                  <div>
+													    <div>
 
-								                    <p><?php echo $value['texto']; ?></p>
+															<p><?php echo $value['texto']; ?></p>
 
-								                  </div>
+														</div>
 
-								                </div>
+													<?php else : ?>
 
-								              </div>
+												        <div>
 
-								            </div>
+												          <div class="carousel-inner">
 
-				              				<?php 
+												          	<div class="slider">
 
-				              				endif;
+															<?php 
 
+																foreach ($value['cases'] as $key => $value) {
+
+																	echo '
+
+															            <div class="item">
+
+															                <div class="thumbnail" style="background-image:url('.$value['thumbnail'].')"></div>
+
+															                <div>
+
+															                  <p>'.$value['texto'].'</p>
+
+															                </div>
+
+															            </div>
+
+															            ';
+
+																}
+
+															?>
+
+															</div>
+
+												          </div>
+
+												        </div>
+
+												    <?php endif; ?>
+
+												  </div>
+
+												</div>
+
+												</div>
+
+				              					<?php
+                                                endif;
+				              				}
 				              			}
+
 
 				              			get_template_part('template_parts/parceiros');
 
@@ -176,7 +218,13 @@
 
 							                        <div class="box-inner">
 
-							                          <h2 class="box-title"><?php echo $value['nome']; ?> <small class="date"><?php echo $value['cargo']; ?></small></h2>
+														<div class="title-section">
+							                          		<h2 class="box-title"><?php echo $value['nome']; ?> </h2>
+							                          		<span>
+							                          			<small class="date"><?php echo $value['cargo']; ?></small>
+							                          		</span>
+														</div>
+
 
 							                          <div class="box-content landscape">
 

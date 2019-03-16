@@ -30,7 +30,7 @@
 
 					                <div class="box">
 
-					                  <div class="box-inner">
+					                  <div class="box-inner post-'.get_post_type().'">
 
 					                    <div class="box-content">
 
@@ -72,7 +72,7 @@
 
 					                <div class="box">
 
-					                  <div class="box-inner">
+					                  <div class="box-inner post-'.get_post_type().'">
 
 					                    <div class="box-content landscape">
 

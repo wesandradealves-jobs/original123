@@ -84,7 +84,16 @@
 
 							                    if($i >= 3) :
 
-							                      echo '<h2 class="box-title"><span>'.get_the_title().'</span><small class="date">'.get_the_date().'</small></h2>';
+							                      echo '
+
+												  <div class="title-section">
+							                      <h2 class="box-title"><span>'.get_the_title().'</span></h2>
+							                      	   <span>
+															<small class="date">'.get_the_date().'</small>
+							                      	   </span>
+												  </div>
+
+							                      ';
 
 							                    endif;
 

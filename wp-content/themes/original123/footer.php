@@ -1,4 +1,4 @@
-		</main>
+			</main>
 
 		<footer class="footer">
 
@@ -88,13 +88,15 @@
 
 			</div>
 
-			<a onclick="backToTop(this)" href="javascript:void(0)" class="backToTop">
+			<?php if($post->post_name != 'contato') : ?>
+				<a onclick="backToTop(this)" href="javascript:void(0)" class="backToTop">
 
-			  <i class="fal fa-angle-up"></i>
+				  <i class="fal fa-angle-up"></i>
 
-			  <span>Voltar ao topo</span>
+				  <span>Voltar ao topo</span>
 
-			</a>
+				</a>
+			<?php endif; ?>
 
 		</footer>
 
@@ -148,7 +150,16 @@
 
 					event.preventDefault();
 
-					var slug = $(this).text();
+					function convertToSlug(Text)
+					{
+					    return Text
+					        .toLowerCase()
+					        .replace(/[^\w ]+/g,'')
+					        .replace(/ +/g,'-')
+					        ;
+					}
+
+					var slug = $(this).text().trim();
 
 					if($('body').is('.pg-interna')){
 

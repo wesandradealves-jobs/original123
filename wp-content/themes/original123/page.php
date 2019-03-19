@@ -19,7 +19,9 @@
 
 		              	<?php if($post->post_name == 'nossa-equipe') : ?>
 
-		              	<h2 class="box-title"><?php echo get_field('rotulo_da_sessao'); ?></h2>
+		                  <?php 
+		                    box_title(false, get_field('rotulo_da_sessao'), 'h2', false);
+		                  ?>   		              	
 
 		              	<?php endif; ?>
 
@@ -30,174 +32,77 @@
 	              		<div>
 
 				              <?php 
+								$sourceID = get_page_by_path( 'o-que-fazemos' );
 
 				              	switch ($post->post_name) {
-
-				              		case 'nossos-parceiros': $k = 0;
-
-				              							              			if(get_field('o_que_fazemos', get_page_by_path( 'o-que-fazemos' ))){
-
-				              				foreach (get_field('o_que_fazemos',get_page_by_path( 'o-que-fazemos' )) as $key => $value) {
-                                                if(!$value['eh_case']) :
-				              					?>
-
-												<div id="<?php echo $value['titulo']; ?>" class="box simple <?php echo ($value['eh_case']) ? 'carousel' : ''; ?>">
-
-												<div class="box-inner">
-
-												  <h2 class="box-title"><?php echo $value['titulo']; ?></h2>
-
-												  <div class="box-content landscape">
-
-												  	<?php if(!$value['eh_case']) : ?>
-
-													    <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></div>
-
-													    <div>
-
-													    <div>
-
-															<p><?php echo $value['texto']; ?></p>
-
-														</div>
-
-													<?php else : ?>
-
-												        <div>
-
-												          <div class="carousel-inner">
-
-												          	<div class="slider">
-
-															<?php 
-
-																foreach ($value['cases'] as $key => $value) {
-
-																	echo '
-
-															            <div class="item">
-
-															                <div class="thumbnail" style="background-image:url('.$value['thumbnail'].')"></div>
-
-															                <div>
-
-															                  <p>'.$value['texto'].'</p>
-
-															                </div>
-
-															            </div>
-
-															            ';
-
-																}
-
-															?>
-
-															</div>
-
-												          </div>
-
-												        </div>
-
-												    <?php endif; ?>
-
-												  </div>
-
-												</div>
-
-												</div>
-
-				              					<?php
-                                                endif;
-				              				}
-				              			}
-
-
-				              			get_template_part('template_parts/parceiros');
-
-				              		break;
-
+				              		case 'nossos-parceiros':
 				              		case 'o-que-fazemos':
+				              			if($post->post_name == 'o-que-fazemos') :
+					              			get_template_part('template_parts/o-que-fazemos');
+					              		endif;
 
-				              			get_template_part('template_parts/o-que-fazemos');
+				              			if(get_field('o_que_fazemos', $sourceID->ID)){
 
-				              			if(get_field('o_que_fazemos')){
-
-				              				foreach (get_field('o_que_fazemos') as $key => $value) {
+				              				foreach (get_field('o_que_fazemos', $sourceID->ID) as $key => $value) {
 
 				              					?>
-
-												<div id="<?php echo $value['titulo']; ?>" class="box simple <?php echo ($value['eh_case']) ? 'carousel' : ''; ?>">
-
-												<div class="box-inner">
-
-												  <h2 class="box-title"><?php echo $value['titulo']; ?></h2>
-
-												  <div class="box-content landscape">
-
-												  	<?php if(!$value['eh_case']) : ?>
-
-													    <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></div>
-
-													    <div>
-
-													    <div>
-
-															<p><?php echo $value['texto']; ?></p>
-
-														</div>
-
-													<?php else : ?>
-
-												        <div>
-
-												          <div class="carousel-inner">
-
-												          	<div class="slider">
-
-															<?php 
-
-																foreach ($value['cases'] as $key => $value) {
-
-																	echo '
-
-															            <div class="item">
-
-															                <div class="thumbnail" style="background-image:url('.$value['thumbnail'].')"></div>
-
-															                <div>
-
-															                  <p>'.$value['texto'].'</p>
-
-															                </div>
-
-															            </div>
-
-															            ';
-
-																}
-
-															?>
-
-															</div>
-
-												          </div>
-
-												        </div>
-
-												    <?php endif; ?>
-
-												  </div>
-
-												</div>
-
-												</div>
+										<div class="box" id="<?php echo $value['titulo']; ?>">
+										  <div class="box-inner">
+										    <div class="box-content landscape">
+										      <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)">
+												    <?php 
+														box_title(false, $value['titulo'], 'h2', false);
+												    ?>
+										      </div>
+										      <div>
+										        <h3 class="title">
+										          <a href="<?php echo get_the_permalink(); ?>" class="excerpt"><span><?php echo $value['texto']; ?></span></a>
+										        </h3>
+										      </div>
+										    </div>
+										  </div>
+										  <?php if($value['eh_case']) : ?>
+							              <div class="carousel">
+							                <div>
+							                  <div class="carousel-inner">
+							                    <div class="slider">
+							                      <!--  -->
+							                      <?php foreach ($value['cases'] as $key => $value) { ?>
+							                      <div class="item">
+							                          <?php 
+							                            box_title('gray', 'Cases de Sucesso', 'h2', false);
+							                          ?>  
+							                        <div class="thumbnail" style="background-image:url(<?php echo $value['thumbnail']; ?>)"></div>
+							                        <div>
+							                          <?php if($value['texto']) : ?>
+							                            <p>
+							                              <span>
+							                              <?php 
+							                                echo $value['texto'];
+							                              ?>
+							                              </span>
+							                            </p>
+							                          <?php endif; ?>
+							                        </div>
+							                      </div>
+							                      <?php } ?>
+							                      <!--  -->
+							                    </div>
+							                  </div>
+							                </div>
+							              </div>
+										  <?php endif; ?>
+										</div>
 
 				              					<?php
 
 				              				}
 
 				              			}
+
+				              			if($post->post_name == 'nossos-parceiros') :
+				              				get_template_part('template_parts/parceiros');
+				              			endif;
 
 				              		break;
 
@@ -212,23 +117,20 @@
 
 					                      		?>
 
-							                      <div id="<?php echo $value['nome']; ?>" class="box bx-subtitle">
-
-							                        <div class="thumbnail" style="background-image: url(<?php echo $value['thumbnail']; ?>)"></div>
+							                      <div id="<?php echo $value['nome']; ?>" class="box">
 
 							                        <div class="box-inner">
 
-														<div class="title-section">
-							                          		<h2 class="box-title"><?php echo $value['nome']; ?> </h2>
-							                          		<span>
-							                          			<small class="date"><?php echo $value['cargo']; ?></small>
-							                          		</span>
-														</div>
+							                          <div class="box-content">
 
-
-							                          <div class="box-content landscape">
+							                        	<div class="thumbnail" style="background-image: url(<?php echo $value['thumbnail']; ?>)"></div>
 
 							                            <div>
+
+															<?php 
+																box_title(false, $value['nome'], 'h2', $value['cargo']);
+															?>   
+
 
 							                              <p>
 

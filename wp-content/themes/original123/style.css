@@ -7559,8 +7559,16 @@ footer .logo img{
      width: 50%;
 }
 
-.pg-o-que-fazemos .o-que-fazemos-menu .box-title[class*="scheme"] .inner{
-     padding: 5px 10px;
+.pg-o-que-fazemos .o-que-fazemos-menu .box-title[class*="scheme"] .inner {
+    padding: 5px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: lowercase;
+}
+
+.pg-o-que-fazemos .o-que-fazemos-menu .box-title[class*="scheme"] .inner:first-letter{
+    text-transforM: capitalize;
 }
 
 .pg-o-que-fazemos .o-que-fazemos-menu > *:nth-child(2n+1){

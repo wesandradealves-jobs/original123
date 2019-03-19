@@ -3,7 +3,9 @@
 	@ini_set( 'post_max_size', '64M');
 	@ini_set( 'max_execution_time', '300' );
 	
-    global $pagenow;
+    function is_login_page() {
+        return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+    }
 
     function cpt() {
         register_post_type('fontes_juridicas', array(
@@ -32,27 +34,6 @@
             'menu_position' => -1,
             'supports' => array('title', 'editor', 'excerpt', 'thumbnail')
         ));  
-        // register_taxonomy( 'produtos_categories', array( 'produtos' ), array(
-        //     'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
-        //     'labels'            => array(
-        //         'name'              => _x( 'Categorias', 'taxonomy general name' ),
-        //         'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
-        //         'search_items'      => __( 'Buscar Categorias' ),
-        //         'all_items'         => __( 'Todas as Categorias' ),
-        //         'parent_item'       => __( 'Categoria Pai' ),
-        //         'parent_item_colon' => __( 'Categoria Pai:' ),
-        //         'edit_item'         => __( 'Editar categoria' ),
-        //         'update_item'       => __( 'Atualizar categoria' ),
-        //         'add_new_item'      => __( 'Adicionar nova categoria' ),
-        //         'new_item_name'     => __( 'Novo nome' ),
-        //         'menu_name'         => __( 'Categorias' ),
-        //     ),
-        //     'show_ui'           => true,
-        //     'show_admin_column' => true,
-        //     'query_var'         => true,
-        //     'hide_empty' => 0,
-        //     'rewrite'           => array( 'slug' => 'category' ),
-        // ));   
     }     
        
     cpt();
@@ -119,7 +100,7 @@
     
     remove_action('welcome_panel', 'wp_welcome_panel');    
     
-    // add_filter('acf/settings/show_admin', '__return_false');
+    add_filter('acf/settings/show_admin', '__return_false');
     
     add_action('wp_before_admin_bar_render', 'wp_before_admin_bar_render');
     

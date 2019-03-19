@@ -35,6 +35,16 @@ function closeMenu() {
 $(window).on("resize",function(o){
 	closeMenu();
 });
+$(document).mouseup(function (e)
+{
+    var container = $('.menu').children();
+
+    if (!container.is(e.target) 
+        && container.has(e.target).length === 0)
+    {
+        closeMenu();
+    }
+});   
 function backToTop(e) {
     $('html, body').stop(true, false).animate({
         scrollTop: ($('.topbar').length) ? $(".topbar").offset().top : $("header").offset().top

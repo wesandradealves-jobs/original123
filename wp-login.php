@@ -188,13 +188,11 @@ function login_header( $title = 'Log In', $message = '', $wp_error = null ) {
 	?>
 	<div id="login">
 		<h1>
-            <a href="<?php echo site_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) )." - ".get_bloginfo('description'); ?>">
-                <?php if(get_theme_mod('logo')) : ?>
-                    <img src="<?php echo get_theme_mod('logo'); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) )." - ".get_bloginfo('description'); ?>">
-                <?php else : ?>
-                    <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>
-                <?php endif; ?>
-            </a> 
+		    <?php 
+		        if(get_theme_mod('logo')) :
+		            get_template_part('template_parts/logo');
+		        endif;
+		    ?>
 		</h1>
 	<?php
 

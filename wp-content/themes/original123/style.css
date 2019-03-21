@@ -14133,6 +14133,7 @@ footer textarea{
 
 }
 
+.thumbnail .zoomin,
 .thumbnail{
 
      background-size: cover;
@@ -15484,6 +15485,24 @@ footer .logo img{
 
 .pg-home .title{
      text-transform: capitalize;
+}
+
+.thumbnail{
+     overflow: hidden;
+}
+
+.thumbnail .zoomin{
+     position: absolute;
+     top: 0;
+     left: 0;
+     height: 100%;
+     width: 100%;
+     display: block;
+     transition: 500ms all linear;
+}
+
+.thumbnail:hover .zoomin{
+     transform: scale(1.1)
 }
 
 /**/

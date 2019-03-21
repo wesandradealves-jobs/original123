@@ -16,7 +16,7 @@
 
       <?php endif; ?>
 
-      <h2 class="title"><?php echo (get_page_by_path( 'nossos-parceiros' )->ID == get_the_id()) ? 'Alguns de Nossos Parceiros' : get_the_title($nossos_parceirosID); ?></h2>
+      <h2 class="title"><?php echo (get_page_by_path( 'nossos-parceiros' )->ID == get_the_id()) ? 'Alguns de Nossos Parceiros' : 'Parceiros'; ?></h2>
 
       <?php if(get_field('parceiros', $nossos_parceirosID)) : ?>
 

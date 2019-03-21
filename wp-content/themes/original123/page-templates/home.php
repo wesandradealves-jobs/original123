@@ -55,7 +55,7 @@
             <div class="box-content">
               <div class="thumbnail" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"></div>
               <div>
-                <small class="date"><?php the_date(); ?></small>
+                <small class="date"><?php echo ((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date(); ?></small>
                 <h3 class="title">
                 <a href="<?php the_permalink(); ?>" class="excerpt"><span><?php echo substr(get_the_excerpt(), 0, 140).'...'; ?></span></a>
                 </h3>
@@ -88,7 +88,7 @@
             <!--  -->
             <?php if(!is_user_logged_in()) : ?>
             <form class="loginform" name="loginform" id="loginform" action="<?php echo site_url( '/wp-login.php' ); ?>" method="post">
-              <p><strong>Para procurar uma fonte ou fazer o download do guia completo, faça o login para acessar.</strong></p>
+              <p><strong>Para procurar uma fonte ou fazer o download do guia completo,<br>faça o login para acessar.</strong></p>
               <span class="fieldset">
                 <span>
                   <input id="user_login" type="text" size="20" value="" placeholder="Usuário" name="log">
@@ -115,7 +115,7 @@
             $query = new WP_Query( $query_args );
             if($query) : ?>
             <div class="carousel">
-              <h4>Veja alguns exemplos</h4>
+              <h4>Veja alguns exemplos:</h4>
               <div>
                 <div class="carousel-inner">
                   <div class="slider">
@@ -219,11 +219,20 @@
             <?php if(get_field('rotulo_da_sessao', $o_que_fazemosID->ID)) : box_title(false, get_field('rotulo_da_sessao', $o_que_fazemosID->ID), 'h2', false); ?>
             <?php endif; ?>
             <div class="box-content">
-              <p>
-                <?php
-                print_r(get_page_by_path( 'o-que-fazemos' )->post_content);
-                ?>
-              </p>
+              <?php
+                $query_args = array(
+                    'post_type' => 'page',
+                    'post__in' => array($o_que_fazemosID->ID)
+                );
+                $query = new WP_Query( $query_args );
+                if($query){
+                  while ( $query->have_posts() ) : $query->the_post();
+                    the_content();
+                  endwhile;
+                }
+                wp_reset_query();
+                wp_reset_postdata();
+              ?>               
             </div>
           </div>
         </div>
@@ -285,7 +294,7 @@
                 <div>
                   <h3 class="title">';
                   if($i < 3) :
-                  echo '<small class="date">'.get_the_date().'</small>';
+                  echo '<small class="date">'.((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date().'</small>';
                   endif;
                   echo '
                   <a href="" class="excerpt"><span>'.get_the_excerpt().'</span></a>

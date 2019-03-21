@@ -63,6 +63,18 @@ $(document).ready(function () {
     }, 600);	
 	
 	$('.telefone').mask('(00) 0 0000-0000');
+
+	$( ".thumbnail" ).each(function() {
+	  $( this ).append('<div class="zoomin" style="background-image:url('+$(this).css('background-image').replace('url("','').replace('")','')+')" />');
+	});
+
+	$( ".menu a" ).each(function() {
+		$( this ).click(function(event) {
+			closeMenu();
+		});	
+	});	
+
+
 });
       
       

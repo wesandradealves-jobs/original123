@@ -41,7 +41,8 @@
 									<div class="box">
 										<div class="box-inner">';
 											if($i >= 3) :
-											box_title(false, get_the_title(), 'h2', get_the_date());
+											// box_title(false, get_the_title(), 'h2', get_the_date());
+												box_title(false, ((get_the_category()[1]->name) ? get_the_category()[1]->name : get_the_title()), 'h2', get_the_date());
 											endif;
 											echo '
 											<div class="box-content '.( ($i < 3) ? 'landscape' : '' ).'">';

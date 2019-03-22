@@ -254,7 +254,7 @@
     'post_type' => 'post',
     
     'paged'          => $paged1,
-    'posts_per_page' => 4,
+    'posts_per_page' => 6,
     'order' => 'DESC',
     'tax_query' => array(
     array(
@@ -282,7 +282,7 @@
           <div class="box">
             <div class="box-inner">';
               if($i >= 3) :
-              box_title(false, get_the_title(), 'h2', get_the_date());
+              box_title(false, ((get_the_category()[1]->name) ? get_the_category()[1]->name : get_the_title()), 'h2', get_the_date());
               endif;
               echo '
               <div class="box-content '.( ($i < 3) ? 'landscape' : '' ).'">';
@@ -297,7 +297,7 @@
                   echo '<small class="date">'.((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date().'</small>';
                   endif;
                   echo '
-                  <a href="" class="excerpt"><span>'.get_the_excerpt().'</span></a>
+                  <a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_excerpt().'</span></a>
                   </h3>
                   <a class="leia-mais" href="'.get_the_permalink().'">Leia a Notícia</a>
                 </div>
@@ -327,7 +327,7 @@
     $query_args = array(
     'post_type' => 'post',
     'paged'          => $paged2,
-    'posts_per_page' => 4,
+    'posts_per_page' => 6,
     'order' => 'DESC',
     'tax_query' => array(
     array(

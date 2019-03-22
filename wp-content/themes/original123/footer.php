@@ -19,10 +19,10 @@
 			<span>
 				<textarea required="required" name="mensagem" placeholder="Deixe aqui sua mensagem *"></textarea>
 			</span>
-			<!-- 		      <span>
+			 <span>
 					<button class="btn btn-1">Enviar</button>
 			</span>
-			-->
+			
 		</form>
 	</div>
 	<div>

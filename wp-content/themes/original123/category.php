@@ -8,11 +8,14 @@
 					<div class="box-content">
 						<div>
 							<ul class="list">
-								<?php if ( have_posts () ) :
+								<?php 
+								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+								if ( have_posts () ) :
 									$i = 0;
 									while (have_posts()) : the_post();
 										if(get_queried_object()->slug == 'sugestoes-de-pauta'){
-								echo '<li>
+								echo '<li id="post_'.get_the_id().'">
 									<div class="box">
 										<div class="box-inner">
 											<div class="box-content landscape">
@@ -37,11 +40,12 @@
 										} else {
 											$i++;
 								echo '
-								<li>
+								<li id="post_'.get_the_id().'">
 									<div class="box">
 										<div class="box-inner">';
 											if($i >= 3) :
-											box_title(false, get_the_title(), 'h2', get_the_date());
+											// box_title(false, get_the_title(), 'h2', get_the_date());
+												box_title(false, ((get_the_category()[1]->name) ? get_the_category()[1]->name : get_the_title()), 'h2', get_the_date());
 											endif;
 											echo '
 											<div class="box-content '.( ($i < 3) ? 'landscape' : '' ).'">';
@@ -66,8 +70,16 @@
 								</li>';
 										}
 									endwhile;
-								endif; ?>
+							        ?>
 							</ul>
+							        <?php
+							        $pag_args1 = array(
+							            'format'  => '?paged=%#%#clientes-na-imprensa',
+							            'current' => $paged,
+							            'total'   => $wp_query->max_num_pages
+							        );
+							        echo paginate_links( $pag_args1 );								
+								endif; ?>
 						</div>
 					</div>
 				</div>

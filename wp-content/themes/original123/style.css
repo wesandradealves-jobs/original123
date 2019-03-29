@@ -8544,7 +8544,8 @@ p~p:empty {
 }
 
 .home .clientes-na-imprensa {
-    margin-top: 36px
+    /*margin-top: 25px*/
+    margin-top: 55px
 }
 
 .carousel .thumbnail,
@@ -8557,7 +8558,8 @@ p~p:empty {
 }
 
 .home .loginform {
-    margin: 21px 0 15px;
+    /*margin: 21px 0 15px;*/
+    margin: 10px 0 0;
     width: 100%
 }
 
@@ -8638,20 +8640,10 @@ footer textarea {
     text-decoration: underline
 }
 
-.carousel .bx-wrapper .bx-pager.bx-default-pager a.bx-next,
-.carousel .bx-wrapper .bx-pager.bx-default-pager a.bx-prev {
-    background-color: transparent;
+.bx-next,
+.bx-prev {
     font-size: 12px;
-    flex: 0 0 auto;
-    color: var(--orange);
-    text-indent: initial;
-    width: auto;
-    height: auto;
-    border-radius: initial;
-    margin: 0;
-    text-transform: lowercase;
-    left: initial;
-    right: initial
+    color: var(--orange)
 }
 
 .carousel .bx-wrapper .bx-pager.bx-default-pager a.bx-next {
@@ -9185,7 +9177,7 @@ h2.title {
 .footer form button:hover,
 .footer form input[type=submit]:hover {
     background-color: var(--clearorange);
-    cursor: pointer;
+    cursor: pointer
 }
 
 .footer form>:last-child {
@@ -9427,8 +9419,9 @@ footer .logo img {
     padding-bottom: 10px
 }
 
-.pg-interna.pg-parceiros,
-.pg-interna.pg-o-que-fazemos {
+.pg-interna.pg-guia-de-fontes-jurídicas,
+.pg-interna.pg-o-que-fazemos,
+.pg-interna.pg-parceiros {
     --content-gap: calc(65px * 4);
     --content-gap-background: white;
     --content-gap-margin: 0 auto;
@@ -9536,48 +9529,48 @@ footer .logo img {
     padding-left: 15px
 }
 
-.pg-parceiros .box .box .thumbnail,
-.pg-o-que-fazemos .box .box .thumbnail {
+.pg-o-que-fazemos .box .box .thumbnail,
+.pg-parceiros .box .box .thumbnail {
     height: 0;
     padding: 0 0 40%
 }
 
-.pg-parceiros .box .box .box-title>span:first-of-type:only-of-type,
-.pg-o-que-fazemos .box .box .box-title>span:first-of-type:only-of-type {
+.pg-o-que-fazemos .box .box .box-title>span:first-of-type:only-of-type,
+.pg-parceiros .box .box .box-title>span:first-of-type:only-of-type {
     max-width: 75%
 }
 
-.pg-parceiros .box .box .box-content>.thumbnail+div,
-.pg-o-que-fazemos .box .box .box-content>.thumbnail+div {
+.pg-o-que-fazemos .box .box .box-content>.thumbnail+div,
+.pg-parceiros .box .box .box-content>.thumbnail+div {
     padding: 30px 0
 }
 
-.pg-parceiros .box .box .carousel .thumbnail,
-.pg-o-que-fazemos .box .box .carousel .thumbnail {
+.pg-o-que-fazemos .box .box .carousel .thumbnail,
+.pg-parceiros .box .box .carousel .thumbnail {
     margin: 30px 17px 0;
     padding: 0;
     height: 222px;
     width: 222px
 }
 
-.pg-parceiros .carousel .thumbnail+div,
-.pg-o-que-fazemos .carousel .thumbnail+div {
+.pg-o-que-fazemos .carousel .thumbnail+div,
+.pg-parceiros .carousel .thumbnail+div {
     padding-top: 30px
 }
 
-.pg-parceiros .carousel .item>.thumbnail+div p,
-.pg-o-que-fazemos .carousel .item>.thumbnail+div p {
+.pg-o-que-fazemos .carousel .item>.thumbnail+div p,
+.pg-parceiros .carousel .item>.thumbnail+div p {
     padding: 0 17px 0 0
 }
 
-.pg-parceiros .carousel .bx-controls,
-.pg-o-que-fazemos .carousel .bx-controls {
+.pg-o-que-fazemos .carousel .bx-controls,
+.pg-parceiros .carousel .bx-controls {
     margin: 65px auto 0;
     max-width: 60%
 }
 
-.pg-parceiros .o-que-fazemos-menu~.box:not(:last-of-type),
-.pg-o-que-fazemos .o-que-fazemos-menu~.box:not(:last-of-type) {
+.pg-o-que-fazemos .o-que-fazemos-menu~.box:not(:last-of-type),
+.pg-parceiros .o-que-fazemos-menu~.box:not(:last-of-type) {
     margin-bottom: 65px
 }
 
@@ -9636,7 +9629,8 @@ footer .logo img {
 }
 
 .home .container>div:nth-of-type(n+2)>.box>.box-inner>.box-content>p {
-    font-size: 15.2px;
+    /*font-size: 15.2px;*/
+    font-size: 17.8px;
     line-height: 1.42;
     letter-spacing: -.22px
 }
@@ -9771,7 +9765,177 @@ footer .logo img {
     line-height: initial
 }
 
+html {
+    min-height: 100vh
+}
+
+.pg-contato {
+    min-height: 100vh
+}
+
+.pg-contato #wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap
+}
+
+.pg-contato .footer {
+    flex: 1
+}
+
+.bx-controls.bx-has-controls-direction.bx-has-pager {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between
+}
+
+.bx-controls.bx-has-controls-direction.bx-has-pager .bx-prev {
+    order: 1
+}
+
+.bx-controls.bx-has-controls-direction.bx-has-pager .bx-next {
+    order: 3
+}
+
+.bx-controls.bx-has-controls-direction.bx-has-pager>* {
+    flex: 0 0 auto
+}
+
+.bx-controls.bx-has-controls-direction.bx-has-pager .bx-pager {
+    flex: 1;
+    order: 2
+}
+
+.pg-home .bx-controls.bx-has-controls-direction.bx-has-pager {
+    padding: 0 7px
+}
+
+.pg-nossa-equipe .thumbnail:hover .zoomin {
+    transform: initial
+}
+
+.pg-interna-banner {
+    height: 350px;
+    display: block;
+    width: 100%;
+    margin-bottom: 35px;
+    background-size: cover;
+    background-position: center top
+}
+
+.guia-de-fontes-juridicas .container > .box:not([class*=scheme]) .box-content.landscape>.thumbnail{
+	cursor: pointer;
+	height: 0;
+	padding: 0 0 46%;
+}
+.guia-de-fontes-juridicas .container > .box:not([class*=scheme]) .box-content.landscape>.thumbnail + div{
+	padding: 55px 0 0;
+}
+
+.pg-interna .guia-de-fontes-juridicas form{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 24px auto 30px;
+}
+.pg-interna .guia-de-fontes-juridicas form > *{
+    flex: 0 0 auto;
+    line-height: 44px;
+}
+
+.pg-interna .guia-de-fontes-juridicas form [class*="fa-"]{
+    padding-left: 10px;
+    color: var(--orange);
+    font-size: 26px;
+}
+
+.pg-interna .guia-de-fontes-juridicas form [class*="fa-"],
+.pg-interna .guia-de-fontes-juridicas form input{
+    background-color: var(--lightgray);
+}
+
+.pg-interna .guia-de-fontes-juridicas form input{
+    flex: 1;
+    margin-right: 19px;
+    padding-left: 10px
+}
+
+.pg-interna .guia-de-fontes-juridicas form .btn{
+    width: 80px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.search-results .result{
+    background-color: var(--lightgray);
+}
+
+.carousel .item.result:not(:last-of-type){
+    margin-bottom: 15px;
+}
+
+.carousel .item.result>div:last-of-type {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 0;
+    background: var(--gray);
+    text-align: center;
+}
+
+.carousel .item.result>.thumbnail+div p span {
+    padding: 15px 20px;
+    border: 4px var(--gray) solid;
+    width: calc(100% - 17px);
+    max-height: 170px;
+    overflow: auto;
+}
+
+.result-text{
+    font-weight: bold;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 15px;
+    font-style: italic
+}
+
+.pg-interna main{
+    background-color: white !important;
+}
+
+.pg-interna main p {
+    font-size: 18.5px !important;
+}
+
+.menu a,
+.title{
+    text-transform: lowercase !important;
+}
+
+.menu a:first-letter,
+.title:first-letter{
+    text-transform: uppercase !important;
+}
+
+.pg-search .box small {
+    font-size: 17px;
+    text-transform: initial;
+}
+
+.pg-interna .list .box{
+    box-shadow: none !important
+}
+
+.home .loginform .fieldset>span input, footer input, footer textarea{
+    color: gray;
+}
+
 @media only screen and (max-width:1180px) {
+    .pg-interna main p {
+        font-size: 14px !important;
+    }    
     .searchbar {
         max-width: 160px;
         margin: 0 20px 0 20px
@@ -9794,6 +9958,7 @@ footer .logo img {
                 flex: 1;
                 width: initial
             }
+            .pg-interna.pg-guia-de-fontes-jurídicas,
             .pg-interna.nossos-parceiros,
             .pg-interna.pg-o-que-fazemos {
                 --content-gap: calc(65px * 2)
@@ -9807,19 +9972,19 @@ footer .logo img {
                 .pg-home .quem-somos .container>div>div:nth-of-type(2n+1) {
                     padding-right: 0
                 }
-                .pg-parceiros .box .box .carousel .thumbnail,
-                .pg-o-que-fazemos .box .box .carousel .thumbnail {
+                .pg-o-que-fazemos .box .box .carousel .thumbnail,
+                .pg-parceiros .box .box .carousel .thumbnail {
                     height: 0;
                     margin: 0;
                     padding: 0 0 50%;
                     width: 100%
                 }
-                .pg-parceiros .carousel .item>.thumbnail+div p,
-                .pg-o-que-fazemos .carousel .item>.thumbnail+div p {
+                .pg-o-que-fazemos .carousel .item>.thumbnail+div p,
+                .pg-parceiros .carousel .item>.thumbnail+div p {
                     padding: 0
                 }
-                .pg-parceiros .carousel .thumbnail+div,
-                .pg-o-que-fazemos .carousel .thumbnail+div {
+                .pg-o-que-fazemos .carousel .thumbnail+div,
+                .pg-parceiros .carousel .thumbnail+div {
                     padding: 15px
                 }
                 .header .container>.searchbar {
@@ -9905,11 +10070,12 @@ footer .logo img {
                     width: 50%
                 }
                 @media only screen and (max-width:860px) {
-                	.pg-home .o-que-fazemos-menu li .box-title[class*=scheme] .inner{
-                		word-break: break-word
-                	}
-                    .pg-interna.pg-parceiros,
-                    .pg-interna.pg-o-que-fazemos {
+                    .pg-home .o-que-fazemos-menu li .box-title[class*=scheme] .inner {
+                        word-break: break-word
+                    }
+                    .pg-interna.pg-guia-de-fontes-jurídicas,
+                    .pg-interna.pg-o-que-fazemos,
+                    .pg-interna.pg-parceiros {
                         --content-gap: 0
                     }
                     @media only screen and (max-width:737px) {
@@ -9953,25 +10119,28 @@ footer .logo img {
                                 align-items: center
                             }
                             @media only screen and (max-width:568px) {
-                            	footer .logo img{
-                            		height: auto
-                            	}
-                            	.pg-home .nossa-equipe{
-                            		margin-right: 0;
-                            		margin-bottom: 0;
-                            	}
-                            	.pg-home .nossa-equipe ul>li{
-                            		width: 31%;
-                            		margin-right: 0
-                            	}
+                                .carousel .item.result>.thumbnail+div p span{
+                                    width: 100%;
+                                }
+                                footer .logo img {
+                                    height: auto
+                                }
+                                .pg-home .nossa-equipe {
+                                    margin-right: 0;
+                                    margin-bottom: 0
+                                }
+                                .pg-home .nossa-equipe ul>li {
+                                    width: 31%;
+                                    margin-right: 0
+                                }
                                 .logo img {
                                     height: auto;
                                     min-width: initial;
                                     max-height: 250px;
-                                    max-width: 225px;
+                                    max-width: 225px
                                 }
-                                .logo{
-                                	text-indent: 0 !important
+                                .logo {
+                                    text-indent: -25px!important
                                 }
                                 .pg-archive .box-title>span:first-of-type,
                                 .pg-cateegory .box-title>span:first-of-type,
@@ -10029,9 +10198,9 @@ footer .logo img {
                                         align-items: flex-start
                                     }
                                     @media only screen and (max-width:414px) {
-		                            	.pg-home .nossa-equipe ul>li{
-		                            		width: 45%
-		                            	}
+                                        .pg-home .nossa-equipe ul>li {
+                                            width: 45%
+                                        }
                                         .o-que-fazemos.inner-session>div:first-of-type .box-title .inner {
                                             line-height: initial;
                                             padding: 10px
@@ -10076,8 +10245,8 @@ footer .logo img {
                                         .pg-o-que-fazemos .o-que-fazemos-menu>:nth-child(2n+2) {
                                             padding-left: 0
                                         }
-                                        .pg-nossos-parceirso .carousel .bx-controls,
-                                        .pg-o-que-fazemos .carousel .bx-controls {
+                                        .pg-o-que-fazemos .carousel .bx-controls,
+                                        .pg-parceiros .carousel .bx-controls {
                                             max-width: 100%
                                         }
                                     }

@@ -14,6 +14,26 @@
 
     }
 
+    function title_filter( $where, $wp_query ){
+         global $wpdb;
+         if( $search_term = $wp_query->get( 'title_filter' ) ) :
+         $search_term = $wpdb->esc_like( $search_term );
+         $search_term = ' \'%' . $search_term . '%\'';
+         $title_filter_relation = ( strtoupper( $wp_query->get( 'title_filter_relation' ) ) == 'OR' ? 'OR' : 'AND' );
+         $where .= ' '.$title_filter_relation.' ' . $wpdb->posts . '.post_title LIKE ' . $search_term;
+         endif;
+         return $where;
+    }
+
+    // if (!is_admin()) {
+    //     function wpb_search_filter($query) {
+    //         if ($query->is_search) {
+    //             $query->set('post_type', 'post');
+    //         }
+    //         return $query;
+    //     }
+    //     add_filter('pre_get_posts','wpb_search_filter');
+    // }
 
 
     add_filter('query_vars', 'add_my_var');
@@ -58,7 +78,7 @@
 
             ),
 
-            'exclude_from_search' => (is_user_logged_in()) ? false : true, // the important line here!
+            'exclude_from_search' => true, // the important line here!
 
             'public' => true,
 
@@ -214,7 +234,7 @@
 
     
 
-    add_filter('acf/settings/show_admin', '__return_false');
+    // add_filter('acf/settings/show_admin', '__return_false');
 
     
 
@@ -253,6 +273,203 @@
     if( function_exists('acf_add_local_field_group') ):
 
     
+        acf_add_local_field_group(array(
+            'key' => 'group_5c884d9a34bb1',
+            'title' => 'Fontes Jurídicas',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c884da02a4e0',
+                    'label' => 'Telefone',
+                    'name' => 'telefone',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_5c884dd55eec4',
+                    'label' => 'E-mail',
+                    'name' => 'email',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_5c9d30b3276a8',
+                    'label' => 'Veiculo',
+                    'name' => 'veiculo',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'fontes_juridicas',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c9d15c5a6399',
+            'title' => 'Guia de Fontes Jurídicas',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c9d15d104112',
+                    'label' => '',
+                    'name' => 'guia_de_fontes_juridicas',
+                    'type' => 'group',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'layout' => 'block',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_5c9d15dc04113',
+                            'label' => 'Rótulo  da Sessão',
+                            'name' => 'rotulo__da_sessao',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c9d194c9eb39',
+                            'label' => 'Thumbnail',
+                            'name' => 'thumbnail',
+                            'type' => 'image',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'url',
+                            'preview_size' => 'large',
+                            'library' => 'uploadedTo',
+                            'min_width' => '',
+                            'min_height' => '',
+                            'min_size' => '',
+                            'max_width' => '',
+                            'max_height' => '',
+                            'max_size' => '',
+                            'mime_types' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c9d15ee04114',
+                            'label' => 'Arquivo pra Download',
+                            'name' => 'arquivo_pra_download',
+                            'type' => 'file',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'array',
+                            'library' => 'uploadedTo',
+                            'min_size' => '',
+                            'max_size' => '',
+                            'mime_types' => '',
+                        ),
+                    ),
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'page_template',
+                        'operator' => '==',
+                        'value' => 'page-templates/guia-de-fontes-juridicas.php',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array(
+                0 => 'the_content',
+                1 => 'excerpt',
+                2 => 'discussion',
+                3 => 'comments',
+                4 => 'revisions',
+                5 => 'slug',
+                6 => 'author',
+                7 => 'format',
+                8 => 'featured_image',
+                9 => 'categories',
+                10 => 'tags',
+                11 => 'send-trackbacks',
+            ),
+            'active' => 1,
+            'description' => '',
+        ));
+
 
     acf_add_local_field_group(array(
 
@@ -694,7 +911,9 @@
 
             $url = str_replace($protocol, '', network_site_url());
 
-            wp_redirect($protocol.$subdomain.'.'.$url, 301);
+            // wp_redirect($protocol.$subdomain.'.'.$url, 301);
+
+            wp_redirect(get_page_link(get_page_by_path('guia-de-fontes-juridicas')), 301);
 
             exit;
 

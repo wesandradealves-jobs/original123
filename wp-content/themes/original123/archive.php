@@ -59,7 +59,6 @@
 													echo '
 													<a href="" class="excerpt"><span>'.get_the_excerpt().'</span></a>
 													</h3>
-													<a class="leia-mais" href="'.get_the_permalink().'">Leia a Notícia</a>
 												</div>
 											</div>
 										</div>

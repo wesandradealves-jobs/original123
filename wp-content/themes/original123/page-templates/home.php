@@ -59,7 +59,7 @@
                 <h3 class="title">
                 <a href="<?php the_permalink(); ?>" class="excerpt"><span><?php echo substr(get_the_excerpt(), 0, 140).'...'; ?></span></a>
                 </h3>
-                <a class="leia-mais" href="<?php the_permalink(); ?>">Leia a Notícia</a>
+                <!-- <a class="leia-mais" href="<?php the_permalink(); ?>">Leia a Notícia</a> -->
               </div>
             </div>
           </div>
@@ -299,7 +299,6 @@
                   echo '
                   <a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_excerpt().'</span></a>
                   </h3>
-                  <a class="leia-mais" href="'.get_the_permalink().'">Leia a Notícia</a>
                 </div>
               </div>
             </div>
@@ -389,7 +388,7 @@
     ?>
   </div>
 </section>
-<?php if($nossos_parceirosID->ID || get_field('parceiros', $nossos_parceirosID->ID)) : ?>
-<?php get_template_part('template_parts/parceiros'); ?>
-<?php endif; ?>
+<!-- <?php if($nossos_parceirosID->ID || get_field('parceiros', $nossos_parceirosID->ID)) : ?>
+  <?php get_template_part('template_parts/parceiros'); ?>
+<?php endif; ?> -->
 <?php get_footer(); ?>

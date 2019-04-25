@@ -23,6 +23,10 @@
     $menu = wp_get_nav_menu_items('header');
     $current_user = wp_get_current_user();
     include('inc/_util.php');
+
+
+
+
     ?>
   </head>
   <body
@@ -56,13 +60,14 @@
           <ul>
             <?php
             foreach (wp_get_nav_menu_items('header') as $key => $value) :
-              if($value->title == 'Guia de Fontes Jurídicas' && !is_user_logged_in()){
-                if($value->title != 'Guia de Fontes Jurídicas'){
-                  echo '<li><a href="'.$value->url.'" title="'.$value->title.'">'.$value->title.'</a></li>';
-                }
-              } else {
-                  echo '<li><a href="'.$value->url.'" title="'.$value->title.'">'.$value->title.'</a></li>';
-              }
+              // if($value->title == 'Guia de Fontes Jurídicas' && !is_user_logged_in()){
+              //   if($value->title != 'Guia de Fontes Jurídicas'){
+              //     echo '<li><a href="'.$value->url.'" title="'.$value->title.'">'.$value->title.'</a></li>';
+              //   }
+              // } else {
+              //     echo '<li><a href="'.$value->url.'" title="'.$value->title.'">'.$value->title.'</a></li>';
+              // }
+              echo '<li><a href="'.$value->url.'" title="'.$value->title.'">'.$value->title.'</a></li>';
             endforeach;
             ?>
           </ul>

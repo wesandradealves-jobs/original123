@@ -21,7 +21,7 @@
 													<small class="date">'.get_the_date().'</small>
 													<a class="excerpt" href="'.get_the_permalink().'">'.get_the_title().'</a>
 													</h3>
-													<p>'.get_the_excerpt().'</p>';
+													<p>'.substr(get_the_excerpt(), 0, 200).'...</p>';
 													if(get_field('autor')) :
 													echo '
 													<span class="box-footer">
@@ -57,7 +57,7 @@
 													echo '<small class="date">'.((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date().'</small>';
 													endif;
 													echo '
-													<a href="" class="excerpt"><span>'.get_the_excerpt().'</span></a>
+													<a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_title().'</span></a>
 													</h3>
 												</div>
 											</div>

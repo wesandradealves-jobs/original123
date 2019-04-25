@@ -149,7 +149,7 @@ nav,
 object,
 ol,
 output,
-p,
+/*p,*/
 pre,
 q,
 ruby,
@@ -8251,6 +8251,9 @@ textarea:-ms-input-placeholder {
     color: #fff;
     min-width: 54px
 }
+.btn.btn-1:hover{
+    background-color: var(--blue);
+}
 
 .container {
     max-width: 1280px;
@@ -8262,17 +8265,18 @@ textarea:-ms-input-placeholder {
 
 body,
 html {
-    background-color: var(--lightgray);
+    background-color: white;
     color: var(--darkgray)
 }
 
 .footer,
 .header {
-    background-color: var(--gray)
+    background-color: white
 }
 
 p {
-    line-height: 1.45;
+    /*line-height: 1.45;*/
+    line-height: 1.6;
     font-size: 15.5px
 }
 
@@ -8463,10 +8467,16 @@ header .logo {
     padding-bottom: 0
 }
 
+.pg-home p{
+    margin: 0;
+    padding: 0;
+}
+
 .pg-home .parceiros,
 .pg-home .quem-somos {
-    --bgcolor: white;
-    background-color: var(--bgcolor)
+    /*--bgcolor: white;*/
+    /*background-color: var(--bgcolor)*/
+    border-top: 2px lightgray solid;
 }
 
 .pg-home .quem-somos .box-title {
@@ -8480,6 +8490,10 @@ header .logo {
     justify-content: flex-start;
     margin-right: -15px;
     margin-bottom: -15px
+}
+
+.pg-home .nossa-equipe .zoomin{
+    display: none
 }
 
 .pg-home .nossa-equipe .box .box-content,
@@ -8545,7 +8559,8 @@ p~p:empty {
 
 .home .clientes-na-imprensa {
     /*margin-top: 25px*/
-    margin-top: 55px
+    /*margin-top: 55px*/
+    margin-top: 73px
 }
 
 .carousel .thumbnail,
@@ -8559,13 +8574,14 @@ p~p:empty {
 
 .home .loginform {
     /*margin: 21px 0 15px;*/
-    margin: 10px 0 0;
+    margin: 35px 0;
     width: 100%
 }
 
 .home .loginform .fieldset .leia-mais {
     margin-top: 0;
-    line-height: 1.3
+    /*line-height: 1.3*/
+    line-height: 1.6;
 }
 
 .home .loginform .fieldset {
@@ -8614,7 +8630,8 @@ footer textarea {
 
 .home .loginform strong {
     display: block;
-    line-height: 1.3;
+    /*line-height: 1.3;*/
+    line-height: 1.6;
     font-weight: 700;
     font-size: 15.4px
 }
@@ -8785,9 +8802,10 @@ footer textarea {
 
 .thumbnail,
 .thumbnail .zoomin {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    background-color: white
 }
 
 .box {
@@ -8813,6 +8831,11 @@ footer textarea {
     flex: 1
 }
 
+.carousel .item>div:only-of-type > p{
+    padding: 15px;
+    font-size: 13.5px;
+}
+
 .box .box-content>div:first-of-type:not(:only-of-type),
 .carousel .item>div:first-of-type:not(:only-of-type) {
     flex: 0 0 auto
@@ -8825,7 +8848,7 @@ footer textarea {
 .home .box,
 .list .box,
 .pg-nossa-equipe .nossa-equipe>.container>div>.box .box {
-    box-shadow: var(--bgcolor, var(--content-gap, 0 3px 5px -5px #000))
+    /*box-shadow: var(--bgcolor, var(--content-gap, 0 3px 5px -5px #000))*/
 }
 
 .pg-interna .container>div>.box>.box-inner>.box-content {
@@ -8853,7 +8876,7 @@ footer textarea {
 }
 
 .list .box:not([class*=scheme]) .box-content>div:only-of-type {
-    padding: 7px 30px 23px;
+    padding: 7px 13px 23px;
     background-color: #fff
 }
 
@@ -8902,7 +8925,8 @@ footer textarea {
 
 .sugestoes-de-pauta .list .box:not([class*=scheme]) .box-content>div:only-of-type .title .excerpt {
     line-height: .15px;
-    font-size: 15px
+    font-size: 15px;
+    text-transform: initial
 }
 
 .sugestoes-de-pauta .list .box:not([class*=scheme]) .box-content>div:only-of-type .title+p {
@@ -8975,7 +8999,16 @@ h3.title {
 .carousel .item>.thumbnail+div p span {
     flex: 1;
     font-size: 15px;
-    padding: 5px 0
+    padding: 5px 0;
+    text-transform: initial !important;
+}
+
+.carousel .item.result > div p span {
+    width: calc(100% - 17px);
+    max-height: 170px;
+    padding: 15px 20px;
+    overflow: auto;
+    display: block;
 }
 
 .carousel .item>.thumbnail+div p span {
@@ -8997,6 +9030,23 @@ h3.title {
     color: var(--orange);
     display: block;
     font-size: 12px
+}
+
+.loginform small{
+    display: inline
+}
+
+.loginform a{
+    color: var(--orange);
+}
+
+.loginform a:hover{
+    text-decoration: underline;
+}
+
+.loginform a:hover,
+.loginform a:hover small{
+    color: var(--blue);
 }
 
 .box small {
@@ -9072,12 +9122,12 @@ h3.title {
     justify-content: center;
     align-items: flex-start;
     flex: 1;
-    padding: 3px 0 0 23px
+    padding: 3px 15px 0 15px
 }
 
 .box-title>span:first-of-type {
     background-color: var(--orange);
-    min-width: 150px;
+    min-width: 250px;
     transform: skew(-35deg)
 }
 
@@ -9101,6 +9151,10 @@ h3.title {
     width: calc(100% - 25px);
     padding: 1px 8px 1px var(--box-gap, 8px);
     word-break: break-all
+}
+
+.pg-interna .box-title .inner{
+    font-size: 16.5px
 }
 
 .box-title>span:first-of-type:not(:only-of-type) .inner {
@@ -9414,6 +9468,13 @@ footer .logo img {
     text-align: right
 }
 
+footer p,
+header p,
+.topbar p{
+    margin: 0;
+    padding: 0;
+}
+
 .topbar .container {
     padding-top: 10px;
     padding-bottom: 10px
@@ -9422,7 +9483,7 @@ footer .logo img {
 .pg-interna.pg-guia-de-fontes-jurídicas,
 .pg-interna.pg-o-que-fazemos,
 .pg-interna.pg-parceiros {
-    --content-gap: calc(65px * 4);
+    --content-gap: 45px;
     --content-gap-background: white;
     --content-gap-margin: 0 auto;
     --content-gap-mWidth: 1280px
@@ -9436,6 +9497,8 @@ footer .logo img {
     padding-right: var(--content-gap, 0)
 }
 
+.pg-interna .guia-de-fontes-juridicas,
+.pg-single .main .container,
 .pg-nossa-equipe .nossa-equipe {
     --gap: 20px;
     margin: 0 auto;
@@ -9468,7 +9531,7 @@ footer .logo img {
 }
 
 .pg-nossa-equipe .nossa-equipe>.container>div>.box .box .box-content {
-    padding: var(--gap)
+    padding: 0
 }
 
 .pg-nossa-equipe .nossa-equipe>.container>div>.box .box .box-content>.thumbnail+div {
@@ -9476,7 +9539,12 @@ footer .logo img {
 }
 
 .pg-nossa-equipe .nossa-equipe>.container>div>.box .box {
-    margin-top: var(--gap)
+    margin-top: 30px
+}
+
+.pg-nossa-equipe .nossa-equipe>.container>div>.box .box:not(:last-of-type){
+    border-bottom: 2px lightgray solid;
+    padding-bottom: 30px;
 }
 
 .pg-nossa-equipe .nossa-equipe>.container>div>.box .box:first-of-type {
@@ -9623,7 +9691,7 @@ footer .logo img {
 }
 
 .home .box-title[class*=scheme][class*=gray] .inner {
-    font-size: 17px;
+    font-size: 15px;
     letter-spacing: .75px;
     padding: 4px 15px
 }
@@ -9631,7 +9699,8 @@ footer .logo img {
 .home .container>div:nth-of-type(n+2)>.box>.box-inner>.box-content>p {
     /*font-size: 15.2px;*/
     font-size: 17.8px;
-    line-height: 1.42;
+    /*line-height: 1.42;*/
+    line-height: 1.6;
     letter-spacing: -.22px
 }
 
@@ -9649,7 +9718,8 @@ footer .logo img {
 }
 
 .quem-somos .container>div:nth-of-type(n+1)>div:nth-child(1)>p {
-    line-height: 1.5;
+    /*line-height: 1.5;*/
+    line-height: 1.6;
     font-size: 18.6px;
     letter-spacing: -.15px
 }
@@ -9660,7 +9730,8 @@ footer .logo img {
 
 .quem-somos .nossa-equipe p {
     font-size: 18.3px;
-    line-height: 1.5;
+    /*line-height: 1.5;*/
+    line-height: 1.6;
     letter-spacing: -.26px
 }
 
@@ -9726,7 +9797,8 @@ footer .logo img {
 
 .o-que-fazemos.inner-session>div:first-of-type p {
     font-size: 18.5px;
-    line-height: 1.52;
+    /*line-height: 1.52;*/
+    line-height: 1.6;
     letter-spacing: -.2px
 }
 
@@ -9825,12 +9897,12 @@ html {
 }
 
 .guia-de-fontes-juridicas .container > .box:not([class*=scheme]) .box-content.landscape>.thumbnail{
-	cursor: pointer;
-	height: 0;
-	padding: 0 0 46%;
+    cursor: pointer;
+    height: 0;
+    padding: 0 0 46%;
 }
 .guia-de-fontes-juridicas .container > .box:not([class*=scheme]) .box-content.landscape>.thumbnail + div{
-	padding: 55px 0 0;
+    padding: 55px 0 0;
 }
 
 .pg-interna .guia-de-fontes-juridicas form{
@@ -9870,6 +9942,68 @@ html {
 
 .search-results .result{
     background-color: var(--lightgray);
+}
+
+.search-results.carousel .item.result>.thumbnail+div p span,
+.search-results.carousel .item>.thumbnail+div p{
+    padding: 0;
+}
+
+.search-results.carousel .item.result>.thumbnail+div p span{
+    border: 0;
+}
+
+.search-results.carousel .item.result>div:first-of-type,
+.search-results.carousel .item.result>div:last-of-type{
+    padding: 0;
+    margin: 0;
+    line-height: initial;
+    background-color: transparent
+}
+
+.search-results.carousel .item.result>div:first-of-type.thumbnail{
+    margin: 10px;
+}
+
+.search-results.carousel .item.result>div:first-of-type:not(.thumbnail){
+    flex: 1;
+}
+
+.search-results.carousel .item.result>div:first-of-type:not(.thumbnail) > p{
+    padding: 10px 20px 0;
+}
+
+.search-results.carousel .item.result>div:first-of-type:not(.thumbnail) ~ div p{
+    padding: 0 20px 10px;
+}
+
+.search-results.carousel .item.result>div:first-of-type p{
+    font-size: 14px!important;
+    display: block;
+    width: 100%;
+    line-height: initial;
+    padding: 0;
+    margin: 0; 
+}
+
+.search-results.carousel .item.result>div:last-of-type p,
+.search-results.carousel .item.result>div:first-of-type p span{
+    margin: 0;
+    padding: 0;
+    text-align: left
+}
+
+.search-results.carousel .item>.thumbnail~div:last-child > p{
+    padding: 10px 20px;
+    text-align: center;
+    background-color: var(--mediumgray)
+}
+
+.search-results.carousel .item>.thumbnail+div > p{
+    line-height: initial;
+    background-color: transparent;
+    padding: 10px 20px;
+    margin: 0;
 }
 
 .carousel .item.result:not(:last-of-type){
@@ -10119,6 +10253,9 @@ html {
                                 align-items: center
                             }
                             @media only screen and (max-width:568px) {
+                                /*.box-title>span:last-of-type:not(:only-of-type){
+                                    padding: 0;
+                                }*/
                                 .carousel .item.result>.thumbnail+div p span{
                                     width: 100%;
                                 }
@@ -10155,6 +10292,8 @@ html {
                                     text-overflow: ellipsis;
                                     white-space: nowrap
                                 }
+                                .pg-interna .guia-de-fontes-juridicas,
+                                .pg-single .main .container,
                                 .pg-nossa-equipe .nossa-equipe {
                                     max-width: 100%
                                 }

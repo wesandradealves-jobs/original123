@@ -56,13 +56,10 @@ $mail->setFrom($email, $nome);
 
 // $mail->setFrom('noreply@original123.com.br', 'Original123');
 
-$mail->addAddress('contato@original123.com.br', 'Original123');
+$mail->addAddress('original123@original123.com.br', 'Original123');
 
 $recipients = array(
-
-	'contato@original123.com.br', 'Original123',
     'wesandradealves@gmail.com' => 'Wesley Andrade'
-
 );
 
 

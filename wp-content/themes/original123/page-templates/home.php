@@ -87,22 +87,26 @@
             </p>
             <!--  -->
             <?php if(!is_user_logged_in()) : ?>
-            <form class="loginform" name="loginform" id="loginform" action="<?php echo site_url( '/wp-login.php' ); ?>" method="post">
-              <p><strong>Para procurar uma fonte ou fazer o download do guia completo,<br>faça o login para acessar.</strong></p>
-              <span class="fieldset">
-                <span>
-                  <input id="user_login" type="text" size="20" value="" placeholder="Usuário" name="log">
+<!--               <form class="loginform" name="loginform" id="loginform" action="<?php echo site_url( '/wp-login.php' ); ?>" method="post">
+                <p><strong>Para procurar uma fonte ou fazer o download do guia completo,<br>faça o login para acessar.</strong></p>
+                <span class="fieldset">
+                  <span>
+                    <input id="user_login" type="text" size="20" value="" placeholder="Usuário" name="log">
+                  </span>
+                  <span>
+                    <input id="user_pass" type="password" size="20" placeholder="Senha" value="" name="pwd"></p>
+                  </span>
                 </span>
-                <span>
-                  <input id="user_pass" type="password" size="20" placeholder="Senha" value="" name="pwd"></p>
+                <span class="fieldset">
+                  <a class="leia-mais" href="<?php echo site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas'); ?> ">Ainda não sou cadastrado.</a>
+                  <button class="btn btn-1" value="Login" name="wp-submit">Entrar</button>
+                  <input type="hidden" value="1" name="testcookie">
                 </span>
-              </span>
-              <span class="fieldset">
-                <a class="leia-mais" href="<?php echo site_url('/wp-login.php?action=register&redirect_to=' . get_permalink()); ?>">Ainda não sou cadastrado.</a>
-                <button class="btn btn-1" value="Login" name="wp-submit">Entrar</button>
-                <input type="hidden" value="1" name="testcookie">
-              </span>
-            </form>
+              </form>  -->  
+              <p class="loginform">
+                <strong>Para acessar o guia completo <a href="<?php echo site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas'); ?>">clique aqui e faça o seu cadastro</a>.</strong>
+                <a href="<?php echo wp_login_url(add_query_arg('ref', $post->post_name)); ?>"><small>Já sou cadastrado</small> | </a><a href="<?php echo wp_lostpassword_url(); ?>"><small>Esqueceu sua senha?</small></a>
+              </p>    
             <!--  -->
             <?php endif; ?>
             <?php
@@ -122,17 +126,15 @@
                     <!--  -->
                     <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                     <div class="item">
-                      <div class="thumbnail" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"></div>
+                      <!-- <div class="thumbnail" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"></div> -->
                       <div>
                         <?php
-                        box_title('gray', get_the_title(), 'h2', false);
+                        box_title('gray', get_the_title(), 'h2', get_field('categoria'));
                         ?>
-                        <?php if(get_the_excerpt()) : ?>
                         <p>
                           <span>
                             <?php
-                            $excerpt = get_the_excerpt();
-                            echo substr($excerpt, 0, 140);
+                              echo (get_the_excerpt()) ? get_the_excerpt() : get_the_content();
                             ?>
                           </span>
                           <?php if(get_field('telefone')||get_field('email')) : ?>
@@ -144,7 +146,6 @@
                           </small>
                           <?php endif; ?>
                         </p>
-                        <?php endif; ?>
                       </div>
                     </div>
                     <?php endwhile; ?>
@@ -182,8 +183,7 @@
         <h2 class="title"><?php echo get_the_title($nossa_equipeID); ?></h2>
         <div class="box">
           <div class="box-inner">
-            <?php if(get_field('rotulo_da_sessao', $nossa_equipeID)) : box_title(false, get_field('rotulo_da_sessao', $nossa_equipeID), 'h2', false); ?>
-            <?php endif; ?>
+            <?php box_title(false, 'UM TIME ESPECIALIZADO EM NOTÍCIA', 'h2', false); ?>
             <div class="box-content">
               <p>
                 <?php
@@ -194,19 +194,26 @@
             </div>
           </div>
         </div>
-        <?php if(get_field('equipe', $nossa_equipeID)) : ?>
         <ul>
-          <?php
-          foreach (get_field('equipe', $nossa_equipeID) as $key => $value) {
+          <?php 
+            $query_args = array(
+              'post_type' => 'nossa-equipe',
+              'order' => 'ASC',
+              'orderby' => 'name',              
+              'posts_per_page' => -1
+            );
+            $query = new WP_Query( $query_args );
+            while ( $query->have_posts() ) : $query->the_post();
           ?>
           <li>
-            <a title="<?php echo $value['nome'].' - '.$value['cargo']; ?>" class="thumbnail" href="<?php echo get_the_permalink($nossa_equipeID).'#'.$value['nome']; ?>" style="background-image:url(<?php echo ($value['thumbnail']) ? $value['thumbnail'] : get_template_directory_uri().'/assets/imgs/nopic.png'; ?>)"></a>
+            <a title="<?php echo get_the_title().' - '.get_field('cargo'); ?>" class="thumbnail" href="<?php echo get_page_by_path('nossa-equipe')->guid.'#'.get_the_title(); ?>" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"></a>            
           </li>
-          <?php
-          }
+          <?php 
+            endwhile;
+            wp_reset_query();
+            wp_reset_postdata();  
           ?>
         </ul>
-        <?php endif; ?>
       </div>
       <?php endif; ?>
     </div>
@@ -297,7 +304,7 @@
                   echo '<small class="date">'.((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date().'</small>';
                   endif;
                   echo '
-                  <a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_excerpt().'</span></a>
+                  <a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_title().'</span></a>
                   </h3>
                 </div>
               </div>
@@ -356,7 +363,7 @@
                   <small class="date">'.get_the_date().'</small>
                   <a class="excerpt" href="'.get_the_permalink().'">'.get_the_title().'</a>
                   </h3>
-                  <p>'.get_the_excerpt().'</p>';
+                  <p>'.substr(get_the_excerpt(), 0, 200).'...</p>';
                   if(get_field('autor')) :
                   echo '
                   <span class="box-footer">

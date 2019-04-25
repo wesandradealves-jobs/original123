@@ -1,5 +1,12 @@
 <?php /* Template Name: Guia de Fontes Jurídicas */ ?>
-<?php get_header(); ?>
+<?php 
+  if ( 0 == $current_user->ID ) {
+      // wp_safe_redirect( wp_login_url() );
+      wp_redirect(wp_login_url(add_query_arg('ref', $post->post_name)));
+      exit;
+  }  
+  get_header(); 
+?>
 <?php if ( have_posts () ) : while (have_posts()) : the_post(); ?>
 <section class="<?php echo $post->post_name; ?>">
   <div class="container">
@@ -10,13 +17,13 @@
       <div class="box">
           <div class="box-inner">
             <div class="box-content landscape">
-              <div onclick="document.location='<?php echo get_field(str_replace('-','_',$post->post_name))['arquivo_pra_download']['url']; ?>';return false;" class="thumbnail" style="background-image:url(<?php echo get_field(str_replace('-','_',$post->post_name))['thumbnail']; ?>)">
+<!--               <div onclick="document.location='<?php echo get_field(str_replace('-','_',$post->post_name))['arquivo_pra_download']['url']; ?>';return false;" class="thumbnail" style="background-image:url(<?php echo get_field(str_replace('-','_',$post->post_name))['thumbnail']; ?>)">
                 <?php
                   if(get_field(str_replace('-','_',$post->post_name))['rotulo__da_sessao']){
                     box_title(false, get_field(str_replace('-','_',$post->post_name))['rotulo__da_sessao'], 'h2', false);
                   }
                 ?>
-              </div>              
+              </div>  -->             
               <div>
                 <div class="box">
                     <div class="box-inner">
@@ -67,13 +74,11 @@
                                     ?>
                                     <div class="item result">
                                      <!--  -->
+                                     <?php if(wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full')) : ?>
                                      <div class="thumbnail" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"><a href="" class="zoomin" style="background-image:url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>)"></a></div>
+                                      <?php endif; ?>
                                      <div>
-                                       <h2 class="box-title gray-scheme">
-                                         <span>
-                                           <span class="inner"><?php echo get_the_title(); ?></span>
-                                         </span>
-                                       </h2>                                                
+            							<?php box_title('gray', get_the_title(), 'h2', get_field('categoria')); ?>                                               
                                        <p>
                                          <span>
                                            <?php echo get_the_content(); ?>

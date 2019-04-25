@@ -99,6 +99,14 @@
 ?>
 <script>
 	$(document).ready(function () {
+
+			$('.register-btn').click(function(event) {
+				$(this).closest('form').hide().closest('form').delay(1200).next().show();	
+			}),
+			$('.login-btn').click(function(event) {
+				$(this).closest('form').hide().closest('form').delay(1200).prev().show();	
+			});			
+
 			$( ".o-que-fazemos-menu a" ).each(function() {
 				$(this).click(function(event) {
 					event.preventDefault();

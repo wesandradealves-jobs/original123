@@ -33,7 +33,7 @@ if ( force_ssl_admin() && ! is_ssl() ) {
  * @since 2.1.0
  *
  * @param string   $title    Optional. WordPress login Page title to display in the `<title>` element.
- *                           Default 'Log In'.
+ *                           Default 'Entrar'.
  * @param string   $message  Optional. Message to display in header. Default empty.
  * @param WP_Error $wp_error Optional. The error to pass. Default is a WP_Error instance.
  */
@@ -200,6 +200,14 @@ function login_header( $title = 'Log In', $message = '', $wp_error = null ) {
 		    ?>
 		</h1>
 	<?php
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+	if (strpos($url,'ref') !== false) {
+		?>
+		<h2 class="title">Guia de Fontes Jurídicas</h2>
+		<p>Cadastre-se e garanta acesso aos contatos diretos<br>das mais importantes fontes jurídicas do país.</p>
+		<?php 
+	}
 
 	unset( $login_header_url, $login_header_title );
 
@@ -633,10 +641,10 @@ switch ( $action ) {
 	</form>
 
 	<p id="nav">
-	<a href="<?php echo esc_url( wp_login_url() ); ?>"><?php _e( 'Log in' ); ?></a>
+	<a href="<?php echo esc_url( wp_login_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ); ?>"><?php _e( 'Já sou cadastrado' ); ?></a>
 		<?php
 		if ( get_option( 'users_can_register' ) ) :
-			$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
+			$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ), __( 'Register' ) );
 
 			echo esc_html( $login_link_separator );
 
@@ -701,7 +709,7 @@ switch ( $action ) {
 		if ( ( ! $errors->has_errors() ) && isset( $_POST['pass1'] ) && ! empty( $_POST['pass1'] ) ) {
 			reset_password( $user, $_POST['pass1'] );
 			setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
-			login_header( __( 'Password Reset' ), '<p class="message reset-pass">' . __( 'Your password has been reset.' ) . ' <a href="' . esc_url( wp_login_url() ) . '">' . __( 'Log in' ) . '</a></p>' );
+			login_header( __( 'Password Reset' ), '<p class="message reset-pass">' . __( 'Your password has been reset.' ) . ' <a href="' . esc_url( wp_login_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ) . '">' . __( 'Entrar' ) . '</a></p>' );
 			login_footer();
 			exit;
 		}
@@ -760,10 +768,10 @@ switch ( $action ) {
 	</form>
 
 	<p id="nav">
-	<a href="<?php echo esc_url( wp_login_url() ); ?>"><?php _e( 'Log in' ); ?></a>
+	<a href="<?php echo esc_url( wp_login_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ); ?>"><?php _e( 'Já sou cadastrado' ); ?></a>
 		<?php
 		if ( get_option( 'users_can_register' ) ) :
-			$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
+			$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ), __( 'Register' ) );
 
 			echo esc_html( $login_link_separator );
 
@@ -851,9 +859,9 @@ switch ( $action ) {
 	</form>
 
 	<p id="nav">
-	<a href="<?php echo esc_url( wp_login_url() ); ?>"><?php _e( 'Log in' ); ?></a>
+	<a href="<?php echo esc_url( wp_login_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ); ?>"><?php _e( 'Já sou cadastrado' ); ?></a>
 		<?php echo esc_html( $login_link_separator ); ?>
-	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+	<a href="<?php echo esc_url( wp_lostpassword_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ); ?>"><?php _e( 'Lost your password?' ); ?></a>
 	</p>
 
 		<?php
@@ -1053,7 +1061,7 @@ switch ( $action ) {
 			wp_clear_auth_cookie();
 		}
 
-		login_header( __( 'Log In' ), '', $errors );
+		login_header( __( 'Entrar' ), '', $errors );
 
 		if ( isset( $_POST['log'] ) ) {
 			$user_login = ( 'incorrect_password' == $errors->get_error_code() || 'empty_password' == $errors->get_error_code() ) ? esc_attr( wp_unslash( $_POST['log'] ) ) : '';
@@ -1086,7 +1094,7 @@ switch ( $action ) {
 		?>
 	<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" <?php checked( $rememberme ); ?> /> <?php esc_html_e( 'Remember Me' ); ?></label></p>
 	<p class="submit">
-		<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In' ); ?>" />
+		<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Entrar' ); ?>" />
 		<?php	if ( $interim_login ) { ?>
 		<input type="hidden" name="interim-login" value="1" />
 	<?php	} else { ?>
@@ -1104,7 +1112,7 @@ switch ( $action ) {
 			<?php
 			if ( ! isset( $_GET['checkemail'] ) || ! in_array( $_GET['checkemail'], array( 'confirm', 'newpass' ) ) ) :
 				if ( get_option( 'users_can_register' ) ) :
-					$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
+					$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ), __( 'Register' ) );
 
 					/** This filter is documented in wp-includes/general-template.php */
 					echo apply_filters( 'register', $registration_url );
@@ -1112,7 +1120,7 @@ switch ( $action ) {
 					echo esc_html( $login_link_separator );
 				endif;
 				?>
-		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+		<a href="<?php echo esc_url( wp_lostpassword_url((( strpos($_SERVER['REQUEST_URI'],'home') !== false || strpos($_SERVER['REQUEST_URI'],'guia-de-fontes-juridicas') !== false ) ? site_url('wp-login.php?action=register&ref=guia-de-fontes-juridicas') : '')) ); ?>"><?php _e( 'Lost your password?' ); ?></a>
 			<?php endif; ?>
 	</p>
 	<?php } ?>
@@ -1169,3 +1177,50 @@ switch ( $action ) {
 
 		break;
 } // End action switch.
+
+    ?>
+	<style>
+		#reg_passmail,
+		p.message{
+			display: none
+		}
+		.login form .input, .login form input[type=checkbox], .login input[type=text],
+		html, body{
+			background: white;
+		}
+		.login form{
+			background: #fafafa!important;
+			padding: 15px;
+		}
+		.login #backtoblog, .login #nav{
+			padding: 0;
+		}
+		.login h1 a{
+			display: block;
+			text-align: left
+		}
+		.login h1 a img{
+			height: auto;
+			max-width: 180px;
+			margin-right: auto
+		}
+		.wp-core-ui .button-primary {
+		    background: #ec7129!important;
+		    border-color: transparent;
+		    box-shadow: none;
+		    text-shadow: none;
+		}	
+		.title{
+		    border-bottom: 2px #ec7129 solid;
+		    color: #185E85;
+		    font-size: 22px;
+		    font-weight: 700;
+		    padding-bottom: 8px;
+		    margin-bottom: 15px
+		}
+		.title + p{
+			font-size: 14px;
+			color: #72777c;
+		}
+	</style>    
+    <?php 

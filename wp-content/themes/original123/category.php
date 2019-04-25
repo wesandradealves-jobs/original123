@@ -8,14 +8,11 @@
 					<div class="box-content">
 						<div>
 							<ul class="list">
-								<?php 
-								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-								if ( have_posts () ) :
+								<?php if ( have_posts () ) :
 									$i = 0;
 									while (have_posts()) : the_post();
 										if(get_queried_object()->slug == 'sugestoes-de-pauta'){
-								echo '<li id="post_'.get_the_id().'">
+								echo '<li>
 									<div class="box">
 										<div class="box-inner">
 											<div class="box-content landscape">
@@ -24,7 +21,7 @@
 													<small class="date">'.get_the_date().'</small>
 													<a class="excerpt" href="'.get_the_permalink().'">'.get_the_title().'</a>
 													</h3>
-													<p>'.get_the_excerpt().'</p>';
+													<p>'.substr(get_the_excerpt(), 0, 200).'...</p>';
 													if(get_field('autor')) :
 													echo '
 													<span class="box-footer">
@@ -40,10 +37,11 @@
 										} else {
 											$i++;
 								echo '
-								<li id="post_'.get_the_id().'">
+								<li>
 									<div class="box">
 										<div class="box-inner">';
 											if($i >= 3) :
+											// box_title(false, get_the_title(), 'h2', get_the_date());
 												box_title(false, ((get_the_category()[1]->name) ? get_the_category()[1]->name : get_the_title()), 'h2', get_the_date());
 											endif;
 											echo '
@@ -59,7 +57,7 @@
 													echo '<small class="date">'.((get_field('fonte')) ? get_field('fonte').' / ' : '').get_the_date().'</small>';
 													endif;
 													echo '
-													<a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_excerpt().'</span></a>
+													<a href="'.get_the_permalink().'" class="excerpt"><span>'.get_the_title().'</span></a>
 													</h3>
 												</div>
 											</div>
@@ -68,16 +66,8 @@
 								</li>';
 										}
 									endwhile;
-							        ?>
-							</ul>
-							        <?php
-							        $pag_args1 = array(
-							            'format'  => '?paged=%#%#clientes-na-imprensa',
-							            'current' => $paged,
-							            'total'   => $wp_query->max_num_pages
-							        );
-							        echo paginate_links( $pag_args1 );								
 								endif; ?>
+							</ul>
 						</div>
 					</div>
 				</div>

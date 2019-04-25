@@ -6,8 +6,6 @@
 
 	@ini_set( 'max_execution_time', '300' );
 
-	
-
     function is_login_page() {
 
         return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
@@ -24,6 +22,8 @@
          endif;
          return $where;
     }
+
+
 
     // if (!is_admin()) {
     //     function wpb_search_filter($query) {
@@ -49,6 +49,110 @@
 
 
     function cpt() {
+
+        register_post_type('o-que-fazemos', array(
+
+            'labels' => array(
+
+                'name' => _x('O Que Fazemos', 'post type general name'),
+
+                'singular_name' => _x('O Que Fazemos', 'post type singular name'),
+
+                'add_new' => _x('Novo', 'O Que Fazemos'),
+
+                'add_new_item' => __('Novo O Que Fazemos'),
+
+                'edit_item' => __('Editar O Que Fazemos'),
+
+                'new_item' => __('Novo O Que Fazemos'),
+
+                'view_item' => __('Ver O Que Fazemos'),
+
+                'search_items' => __('Buscar O Que Fazemos'),
+
+                'not_found' =>  __('Nada encontrado'),
+
+                'not_found_in_trash' => __('Nada encontrado'),
+
+                'parent_item_colon' => ''
+
+            ),
+
+            'exclude_from_search' => false, // the important line here!
+
+            'public' => true,
+
+            'publicly_queryable' => true,
+
+            'show_ui' => true,
+
+            'query_var' => true,
+
+            'rewrite' => true,
+
+            'show_in_nav_menus' => true,
+
+            'capability_type' => 'post',
+
+            'hierarchical' => false,
+
+            'menu_position' => -1,
+
+            'supports' => array('title', 'editor', 'excerpt', 'thumbnail')
+
+        ));            
+
+        register_post_type('nossa-equipe', array(
+
+            'labels' => array(
+
+                'name' => _x('Nossa Equipe', 'post type general name'),
+
+                'singular_name' => _x('Nossa Equipe', 'post type singular name'),
+
+                'add_new' => _x('Novo', 'Nossa Equipe'),
+
+                'add_new_item' => __('Novo Nossa Equipe'),
+
+                'edit_item' => __('Editar Nossa Equipe'),
+
+                'new_item' => __('Novo Nossa Equipe'),
+
+                'view_item' => __('Ver Nossa Equipe'),
+
+                'search_items' => __('Buscar Nossa Equipe'),
+
+                'not_found' =>  __('Nada encontrado'),
+
+                'not_found_in_trash' => __('Nada encontrado'),
+
+                'parent_item_colon' => ''
+
+            ),
+
+            'exclude_from_search' => false, // the important line here!
+
+            'public' => true,
+
+            'publicly_queryable' => true,
+
+            'show_ui' => true,
+
+            'query_var' => true,
+
+            'rewrite' => true,
+
+            'show_in_nav_menus' => true,
+
+            'capability_type' => 'post',
+
+            'hierarchical' => false,
+
+            'menu_position' => -1,
+
+            'supports' => array('title', 'editor', 'excerpt', 'thumbnail')
+
+        ));          
 
         register_post_type('fontes_juridicas', array(
 
@@ -102,6 +206,26 @@
 
         ));  
 
+        // register_taxonomy( 'fontes_juridicas_categories', array( 'fontes_juridicas' ), array(
+        //     'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+        //     'labels'            => array(
+        //         'name'              => _x( 'Categoria', 'taxonomy general name' ),
+        //         'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
+        //         'search_items'      => __( 'Buscar Categoria' ),
+        //         'all_items'         => __( 'Todas as Categoria' ),
+        //         'parent_item'       => __( 'Categoria Pai' ),
+        //         'parent_item_colon' => __( 'Categoria Pai:' ),
+        //         'edit_item'         => __( 'Editar Categoria' ),
+        //         'update_item'       => __( 'Atualizar Categoria' ),
+        //         'add_new_item'      => __( 'Adicionar nova Categoria' ),
+        //         'new_item_name'     => __( 'Novo nome' ),
+        //         'menu_name'         => __( 'Categoria' ),
+        //     ),
+        //     'show_ui'           => true,
+        //     'show_admin_column' => true,
+        //     'query_var'         => true,
+        //     'rewrite'           => array( 'slug' => 'category' ),
+        // ));   
     }     
 
        
@@ -148,9 +272,9 @@
 
         wp_enqueue_script('vendors', get_template_directory_uri()."/assets/js/vendors.js",'',12.5, false);
 
-        wp_enqueue_script('commons', get_template_directory_uri()."/assets/js/commons.js",'',12.6, false);
+        wp_enqueue_script('commons', get_template_directory_uri()."/assets/js/commons.js",'','', false);
 
-        wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css', array(), 12.6, 'all');
+        wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css', array(), '', 'all');
 
 	}
 
@@ -178,7 +302,7 @@
 
         //remove_menu_page( 'themes.php' );                 //Appearance
 
-        remove_menu_page( 'plugins.php' );                //Plugins
+        // remove_menu_page( 'plugins.php' );                //Plugins
 
         // remove_menu_page( 'users.php' );                  //Users
 
@@ -272,11 +396,535 @@
 
     if( function_exists('acf_add_local_field_group') ):
 
+        acf_add_local_field_group(array(
+            'key' => 'group_5c938be9bbfe8',
+            'title' => 'Clientes na imprensa',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c938bf2cea9e',
+                    'label' => 'Fonte',
+                    'name' => 'fonte',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_category',
+                        'operator' => '==',
+                        'value' => 'category:clientes-na-imprensa',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5cb688997dd9c',
+            'title' => 'Equipe',
+            'fields' => array(
+                array(
+                    'key' => 'field_5cb688a21b810',
+                    'label' => 'Cargo',
+                    'name' => 'cargo',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'nossa-equipe',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c884f2894de5',
+            'title' => 'Home',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c884f359d6f5',
+                    'label' => 'Sessão Guia de Fontes Jurídicas',
+                    'name' => 'sessao_guia_de_fontes_juridicas',
+                    'type' => 'group',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'layout' => 'row',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_5c884f539d6f7',
+                            'label' => 'Label',
+                            'name' => 'label',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c884f4d9d6f6',
+                            'label' => 'Texto',
+                            'name' => 'texto',
+                            'type' => 'wysiwyg',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'tabs' => 'all',
+                            'toolbar' => 'full',
+                            'media_upload' => 1,
+                            'delay' => 0,
+                        ),
+                    ),
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'page',
+                        'operator' => '==',
+                        'value' => '8',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array(
+                0 => 'excerpt',
+                1 => 'discussion',
+                2 => 'comments',
+                3 => 'revisions',
+                4 => 'slug',
+                5 => 'author',
+                6 => 'format',
+                7 => 'page_attributes',
+                8 => 'featured_image',
+                9 => 'categories',
+                10 => 'tags',
+                11 => 'send-trackbacks',
+            ),
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c884a24b0661',
+            'title' => 'O Que Fazemos (POST)',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c884a9f7bd5a',
+                    'label' => 'Tem case',
+                    'name' => 'eh_case',
+                    'type' => 'true_false',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 1,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ),
+                array(
+                    'key' => 'field_5c884ac47bd5b',
+                    'label' => 'Cases',
+                    'name' => 'cases',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'field_5c884a9f7bd5a',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'collapsed' => '',
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'table',
+                    'button_label' => '',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_5c884ae87bd5c',
+                            'label' => 'Título',
+                            'name' => 'titulo',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c884aef7bd5d',
+                            'label' => 'Texto',
+                            'name' => 'texto',
+                            'type' => 'textarea',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'maxlength' => '',
+                            'rows' => '',
+                            'new_lines' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c884af87bd5e',
+                            'label' => 'Thumbnail',
+                            'name' => 'thumbnail',
+                            'type' => 'image',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'url',
+                            'preview_size' => 'large',
+                            'library' => 'uploadedTo',
+                            'min_width' => '',
+                            'min_height' => '',
+                            'min_size' => '',
+                            'max_width' => '',
+                            'max_height' => '',
+                            'max_size' => '',
+                            'mime_types' => '',
+                        ),
+                    ),
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'o-que-fazemos',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array(
+                0 => 'discussion',
+                1 => 'comments',
+                2 => 'revisions',
+                3 => 'slug',
+                4 => 'author',
+                5 => 'format',
+                6 => 'page_attributes',
+                7 => 'categories',
+                8 => 'tags',
+                9 => 'send-trackbacks',
+            ),
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c884eacb52b0',
+            'title' => 'Parceiros',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c884eacbd4a3',
+                    'label' => 'Parceiros',
+                    'name' => 'parceiros',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'collapsed' => '',
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'row',
+                    'button_label' => 'Novo',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_5c884eacc130c',
+                            'label' => 'Nome',
+                            'name' => 'nome',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        array(
+                            'key' => 'field_5c884ee33b55e',
+                            'label' => 'Texto',
+                            'name' => 'texto',
+                            'type' => 'wysiwyg',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'tabs' => 'all',
+                            'toolbar' => 'full',
+                            'media_upload' => 1,
+                            'delay' => 0,
+                        ),
+                    ),
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'page',
+                        'operator' => '==',
+                        'value' => '16',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array(
+                0 => 'the_content',
+                1 => 'excerpt',
+                2 => 'discussion',
+                3 => 'comments',
+                4 => 'revisions',
+                5 => 'slug',
+                6 => 'author',
+                7 => 'format',
+                8 => 'page_attributes',
+                9 => 'featured_image',
+                10 => 'categories',
+                11 => 'tags',
+                12 => 'send-trackbacks',
+            ),
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c8c3309192d3',
+            'title' => 'Quem Somos',
+            'fields' => false,
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'page',
+                        'operator' => '==',
+                        'value' => '16',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array(
+                0 => 'permalink',
+                1 => 'excerpt',
+                2 => 'discussion',
+                3 => 'comments',
+                4 => 'revisions',
+                5 => 'slug',
+                6 => 'author',
+                7 => 'format',
+                8 => 'page_attributes',
+                9 => 'featured_image',
+                10 => 'categories',
+                11 => 'tags',
+                12 => 'send-trackbacks',
+            ),
+            'active' => 1,
+            'description' => '',
+        ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5c88e77788197',
+            'title' => 'Sugestões de Pauta',
+            'fields' => array(
+                array(
+                    'key' => 'field_5c88e77ee75be',
+                    'label' => 'Autor',
+                    'name' => 'autor',
+                    'type' => 'textarea',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'maxlength' => '',
+                    'rows' => '',
+                    'new_lines' => 'br',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'post',
+                    ),
+                    array(
+                        'param' => 'post_category',
+                        'operator' => '==',
+                        'value' => 'category:sugestoes-de-pauta',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'acf_after_title',
+            'style' => 'seamless',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ));        
+
     
         acf_add_local_field_group(array(
             'key' => 'group_5c884d9a34bb1',
             'title' => 'Fontes Jurídicas',
             'fields' => array(
+                array(
+                    'key' => 'field_5c884da02a4e1',
+                    'label' => 'Categoria',
+                    'name' => 'categoria',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),                
                 array(
                     'key' => 'field_5c884da02a4e0',
                     'label' => 'Telefone',
@@ -471,67 +1119,67 @@
         ));
 
 
-    acf_add_local_field_group(array(
+        acf_add_local_field_group(array(
 
-        'key' => 'group_5c8cea882a553',
+            'key' => 'group_5c8cea882a553',
 
-        'title' => 'Paginas',
+            'title' => 'Paginas',
 
-        'fields' => false,
+            'fields' => false,
 
-        'location' => array(
-
-            array(
+            'location' => array(
 
                 array(
 
-                    'param' => 'post_type',
+                    array(
 
-                    'operator' => '==',
+                        'param' => 'post_type',
 
-                    'value' => 'page',
+                        'operator' => '==',
+
+                        'value' => 'page',
+
+                    ),
 
                 ),
 
             ),
 
-        ),
+            'menu_order' => 0,
 
-        'menu_order' => 0,
+            'position' => 'side',
 
-        'position' => 'side',
+            'style' => 'seamless',
 
-        'style' => 'seamless',
+            'label_placement' => 'top',
 
-        'label_placement' => 'top',
+            'instruction_placement' => 'label',
 
-        'instruction_placement' => 'label',
+            'hide_on_screen' => array(
 
-        'hide_on_screen' => array(
+                0 => 'discussion',
 
-            0 => 'discussion',
+                1 => 'comments',
 
-            1 => 'comments',
+                2 => 'revisions',
 
-            2 => 'revisions',
+                3 => 'slug',
 
-            3 => 'slug',
+                4 => 'author',
 
-            4 => 'author',
+                5 => 'format',
 
-            5 => 'format',
+                6 => 'tags',
 
-            6 => 'tags',
+                7 => 'send-trackbacks',
 
-            7 => 'send-trackbacks',
+            ),
 
-        ),
+            'active' => 1,
 
-        'active' => 1,
+            'description' => '',
 
-        'description' => '',
-
-    ));
+        ));
 
     
 
@@ -919,7 +1567,20 @@
 
         }
 
-    }  
+    } else {
+        $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+        if (strpos($url,'ref') !== false) {
+            $ref = explode('ref=', $url);
+            if($ref[1] == 'home'){
+                if(!current_user_can('administrator') ) :
+                    wp_redirect(get_page_link(get_page_by_path('guia-de-fontes-juridicas')), 301);
+                    // exit;
+                endif;
+            }
+        }
+    }
+
 
 
 
@@ -935,7 +1596,23 @@
 
     }
 
-    
+    add_action( 'wp_login_failed', 'my_front_end_login_fail' ); 
+     
+    function my_front_end_login_fail( $username ) {
+         $referrer = $_SERVER['HTTP_REFERER'];
+         if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
+              wp_redirect( $referrer . '?login=failed' ); 
+              exit;
+         }
+    }    
+
+	function automatically_log_me_in( $user_id ) {
+	    wp_set_current_user( $user_id );
+	    wp_set_auth_cookie( $user_id );
+	    wp_redirect(get_page_link(get_page_by_path('guia-de-fontes-juridicas')), 301);
+	    exit(); 
+	}
+	add_action( 'user_register', 'automatically_log_me_in' );	
 
     add_action('init','remove_thumbnail_support');
 

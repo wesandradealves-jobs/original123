@@ -19,7 +19,7 @@ function mobileNavigation(e) {
 	    $('.menu').toggleClass('toggle'),
 	    setTimeout(function(){
 	    	$('.menu').css('padding-top', header).children().toggleClass('toggle');
-	    }, 1000);
+	    }, 500);
 	}
 }
 function closeMenu() {
@@ -29,7 +29,7 @@ function closeMenu() {
 	    $('.is-active').removeClass('is-active'),
 	    setTimeout(function(){
 		    $('html, body, .menu').removeClass('toggle');
-	    }, 500);	    
+	    }, 250);	    
 	}
 }
 $(window).on("resize",function(o){
@@ -56,16 +56,28 @@ $(document).ready(function () {
 		prevText: '<i class="fas fa-caret-left"></i> Anterior'
 	});
 
-	setTimeout(function(){
-		$('.bx-prev,.bx-next').unwrap(),
-		$('.bx-next').appendTo($('.bx-pager')),
-		$('.bx-prev').prependTo($('.bx-pager'));
-    }, 600);	
+	var arrows = false;
+
+	if(!arrows){
+		setTimeout(function(){
+			arrows = true;
+			if(arrows){
+				$( ".bx-controls-direction" ).each(function() {
+				  $( this ).children().unwrap();
+				});
+				// $(".bx-has-controls-direction").each(function() {
+				// 	$(this).children('.bx-next').appendTo($(this).children('.bx-pager')),
+				// 	$(this).children('.bx-prev').prependTo($(this).children('.bx-pager'));
+				// });
+			}
+	    }, 600);		
+	}
+	
 	
 	$('.telefone').mask('(00) 0 0000-0000');
 
 	$( ".thumbnail" ).each(function() {
-	  $( this ).append('<div class="zoomin" style="background-image:url('+$(this).css('background-image').replace('url("','').replace('")','')+')" />');
+	  $( this ).append('<a href="'+$(this).closest('.box').find('a').attr('href')+'" class="zoomin" style="background-image:url('+$(this).css('background-image').replace('url("','').replace('")','')+')" />');
 	});
 
 	$( ".menu a" ).each(function() {
